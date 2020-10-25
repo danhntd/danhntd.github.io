@@ -1,0 +1,322 @@
+<!DOCTYPE HTML>
+<!--
+	DANH NGUYEN THANH Profile
+	Solid State by HTML5 UP
+-->
+<html>
+	<head>
+		<title>FCNs - Phân đoạn ngữ nghĩa ảnh với mạng tích chập đầy đủ - Writings - Danh Nguyen Thanh</title>
+		<link rel="icon" type="image/ico" href="\images\logo\favicon.ico" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" >
+						<h1><a href="../index.html">Fully Convolutional Networks</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/aboutme.html">About me</a></li>
+								<li><a href="/writings.html">Writings</a></li>
+								<!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+								<!-- <li><a href="#">Log In</a></li> -->
+								<!-- <li><a href="#">Sign Up</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Phân đoạn ngữ nghĩa ảnh với mạng tích chập đầy đủ - FCNs</h2>
+								<p> </p>
+							</div>
+						</header>
+
+
+						<section id="one" class="wrapper alt style1">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">Tóm tắt</h2>
+								<p>
+									<strong>Mục tiêu:</strong> Giới thiệu FCNs - một trong những kiến trúc mạng CNN đầu tiên giải quyết bài toán phân đoạn ngữ nghĩa ảnh.
+								</p>
+								
+								<p>
+									<strong>Bố cục:</strong> <br>
+									<a href="#two">1. Động lực phát triển </a><br>
+									<a href="#three">2. Kiến trúc mạng FCNs</a><br>
+									<a href="#four">3. Kết quả công bố </a><br>
+									<a href="#five">4. Ưu - nhược điểm</a><br>
+								</p>
+
+								<p>
+									<strong>Tham khảo:</strong> <em>Jonathan Long, Evan Shelhamer, and Trevor Darrell. 
+									Fully convolutional networks for semantic segmentation. In Proceedings of the IEEE 
+									conference on computervision and pattern recognition, pages 3431–3440, 2015. </em>
+								</p>
+							</div>
+						</section>
+							
+
+
+						<section id="two" class="wrapper style3">
+							<div class="inner">
+								<p>  
+									Trong những năm gần đây, kỹ thuật phân đoạn ảnh theo ngữ nghĩa không còn đơn thuần 
+									chỉ là xử lý trên các đặc trưng cấp thấp, mà thay vào đó là sự xuất hiện ngày một 
+									nhiều của các thuật toán học sâu cho phép việc phân đoạn ảnh trở nên chính xác hơn.
+								</p>
+
+								<h2 class="major" style="color:lightblue">1. Động lực phát triển</h2>
+								<p>  
+									Bài toán phân đoạn ảnh trước đây được giải quyết dựa trên các đặc trưng cấp thấp 
+									và không có ngữ nghĩa dẫn đến hiệu năng không cao. Đến giai đoạn bùng nổ việc 
+									sử dụng các đặc trưng học sâu, các bài toán thị giác máy tính cơ bản đã được 
+									giải quyết, từ các mạng CNN end-to-end cho bài toán phân loại ảnh đến bài toán 
+									phát hiện đối tượng. <br>
+									Vào năm 2015, J. Long et al đã đề xuất ý tưởng sử dụng các lớp tích chập đầy đủ 
+									từ kiến trúc VGG-net để áp dụng vào bài toán phân đoạn ngữ nghĩa ảnh.
+								</p>
+
+							</div>
+						</section>
+
+						<section id="three" class="wrapper alt style2">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">2. Kiến trúc mạng FCNs</h2>
+								<p>
+									Mạng neuron tích chập đầy đủ - FCNs được đề xuất bởi J. Long et al từ năm 2015 
+									là một trong những kiến trúc mạng CNN đầu tiên được xây dựng để giải quyết bài toán 
+									phân đoạn ảnh theo ngữ nghĩa. Lấy ý tưởng từ mạng kết nối đầy đủ (Fully connected 
+									networks như VGG-net), FCNs có kiến trúc không phức tạp (<a href="#FCNs_model">Hình 1</a>) 
+									nhưng mang lại hiệu quả đáng kể khi học để dự đoán nhãn chi tiết cho từng điểm ảnh.
+								</p>
+								
+								<div>
+									<img src="\images\writings__FCNs_segmentation/FCNs_model.png" id="FCNs_model" 
+									style="width:65.0%" alt="Mô hình mạng FCNs." class="center" />
+									<div class="caption"><em>Hình 1. Mô hình mạng FCNs.</em></div>
+								</div> <br>
+								
+								<p>
+									<strong style="color:lightblue">Từ bài toán phân loại ảnh đến bài toán phân đoạn ảnh:</strong><br><br>
+
+									Với một mạng CNN để phân loại ảnh, thông thường ảnh đầu vào sẽ đi qua các lớp tích chập 
+									để trích xuất đặc trưng, sau đó sẽ đi qua các lớp kết nối đầy đủ để được phân loại và 
+									gán nhãn ở đầu ra.<br>
+    
+									Nếu ta chuyển các lớp kết nối đầy đủ thành các lớp tích chập <em>1 &times 1</em> <b>và</b> 
+									ảnh đầu vào không bị giảm kích thước, thì đầu ra sẽ không đơn giản chỉ là một nhãn. <br>
+    
+									Minh họa ở <a href="#classification_to_segmentation_3">Hình 2</a> cho thấy ảnh đầu vào với 
+									kích thước <em>H &times W</em> được giảm kích thước (downsample) thành <em>H/32 &times W/32</em>. 
+									Vậy nếu ta tăng kích thước của đầu ra tại vị trí đó lên 32 lần, thì sẽ thu được một 
+									biểu đồ nhãn (hay heatmap) của tất cả các điểm ảnh và biểu đồ này có kích thước bằng 
+									ảnh đầu vào. Đó là cách mà mạng FCNs đã làm để cho ta biểu đồ nhãn của từng điểm ảnh 
+									của ảnh đầu vào. 
+								
+									<div>
+										<img src="\images\writings__FCNs_segmentation/classification_to_segmentation_3.png" id="classification_to_segmentation_3" 
+										style="width:75.0%" alt="Minh họa tăng kích thước đầu ra các lớp tích chập cuối thu được biểu đồ nhãn." class="center" />
+										<div class="caption"><em>Hình 2. Minh họa tăng kích thước đầu ra các lớp tích chập cuối thu được biểu đồ nhãn.</em></div>
+									</div> <br>
+
+									<strong style="color:lightblue">Tăng kích thước sử dụng phép tích chập ngược (transposed convolution):</strong><br><br>
+								
+									Mạng FCNs sử dụng transposed convolution để tăng kích thước cho đầu ra của các lớp tích chập cuối, dưới đây là một ví dụ 
+									tính tích chập ngược với ma trận 2 chiều (<a href="#transposed_convolution_example">Hình 3</a>). <br><br>
+								
+									<div>
+										<img src="\images\writings__FCNs_segmentation/transposed_convolution_example.png" id="transposed_convolution_example" 
+										style="width:75.0%" alt="Ví dụ tăng kích thước đặc trưng sử dụng tích chập ngược." class="center" />
+										<div class="caption"><em>Hình 3. Ví dụ tăng kích thước đặc trưng sử dụng tích chập ngược. Đầu vào là ma trận có kích thước 
+											<em>2 &times 2</em> thực hiện transposed convolution với kernel <em>2 &times 2</em>, với bước nhảy <em>stride = 1</em>, 
+											thực hiện nhân kernel với từng phần tử của ma trận đầu vào ta lần lượt có 4 ma trận <br> kích thước <em>3 &times 3</em>; 
+											cộng 4 ma trận lại với nhau ta được đầu ra là kết quả của phép transposed convolution.</em></div>
+									</div> <br>
+
+									<strong style="color:lightblue">Các biến thể của mạng FCNs:</strong><br><br>
+								
+									Nếu ta upsample kết quả đặc trưng đầu ra tại vị trí có kích thước <em>H/32 &times W/32</em> (pool5), mạng với cách làm này có 
+									tên gọi FCN-32s. Tương tự, nếu ta muốn upsample tại vị trí <em>H/16 &times W/16</em> (pool4) thì ta cần thực hiện upsample 
+									hai lần để kích thước đầu ra bằng với ảnh đầu vào, và ta gọi mạng này với tên FCN-16s. Và tại vị trí <em>H/8 &times W/8</em> (pool3) 
+									ta có FCN-8s (<a href="#versions_of_FCN">Hình 4</a>). <br><br>
+
+									<div>
+										<img src="\images\writings__FCNs_segmentation/versions_of_FCN.png" id="versions_of_FCN" 
+										style="width:75.0%" alt="Ví dụ tăng kích thước đặc trưng sử dụng tích chập ngược." class="center" />
+										<div class="caption"><em>Hình 4. Các biến thể của mạng FCNs khi thực hiện upsample tại các 
+											vị trí khác nhau.</em></div>
+									</div> <br>
+
+								</p>
+								
+							</div>
+						</section>
+
+						<section id="four" class="wrapper style4">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">3. Kết quả công bố</h2>
+								<p>
+									Kết quả thực nghiệm của tác giả cho thấy FCN-8s cho hiệu năng tốt nhất trong các biến thể 
+									(<a href="#demo_results_FCN">Hình 5</a>): nếu như FCN-32s cho kết quả phân đoạn ngữ nghĩa khá thô 
+									cứng thì các phiên bản FCN-16s, FCN-8s dần trở nên tương ứng với ground truth do có sự kết hợp 
+									với các thông tin đặc trưng từ các lớp với nhau.
+								</p>
+	
+								
+								<div>
+									<img src="\images\writings__FCNs_segmentation/demo_results_FCN.png" id="demo_results_FCN" 
+									style="width:60.0%" alt="Demo kết quả thực nghiệm FCNs." class="center" />
+									<div class="caption"><em>Hình 5. Demo kết quả thực nghiệm của tác giả<br> công bố trên tập PASCAL VOC 2012, 
+										so sánh sự khác biệt giữa kết quả phân đoạn của các phiên bản FCNs.</em></div>
+								</div> <br>
+
+							</div>
+						</section>
+
+						<section id="five" class="wrapper alt style5">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">4. Ưu - Nhược điểm </h2>
+								<p>
+									FCNs là một trong những kiến trúc đầu tiên áp dụng CNN để giải quyết bài toán phân đoạn ngữ 
+									nghĩa ảnh. Ưu điểm của mô hình này là kiến trúc mạng đơn giản, đồng
+									thời cho khả năng dự đoán kết quả nhanh (<em>175ms</em> trên tập PASCAL VOC 2011/12).
+									Đây là mô hình cho kết quả tiên tiến nhất vào thời điểm được công bố. Tuy nhiên,
+									mô hình còn một số hạn chế do tình trạng mất mát thông tin về không gian khi thực
+									hiện thao tác <em>upsample</em> (<a href="#table:FCNs_prosandcons">Bảng 1</a>).
+
+								</p>
+								
+								<div id="table:FCNs_prosandcons" class="center">
+									<table>
+									<caption>Bảng 1. Ưu - nhược điểm chính của mạng FCNs cho bài toán phân đoạn ngữ nghĩa ảnh</caption>
+									<thead>
+									<tr class="header">
+									<th style="text-align: left;"><strong style="color:lightblue" class="center">Ưu điểm</strong></th>
+									<th style="text-align: left;"><strong style="color:lightblue" class="center">Nhược điểm</strong></th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr class="odd">
+									<td style="text-align: left;">Kiến trúc mạng đơn giản gồm các lớp <br>tích chập kết nối với nhau</td>
+									<td style="text-align: left;">Có tình trạng bị mất thông tin về không gian <br>khi thực hiện thao tác <em>upsample</em></td>
+									</tr>
+									<tr class="even">
+									<td style="text-align: left;">Học và dự đoán kết quả nhanh <br>(<em>175ms</em> trên tập PASCAL VOC 2011/12)</td>
+									<td style="text-align: left;">Độ chính xác phân đoạn chưa cao <br>(<em>6x%</em> mIoU trên tập PASCAL VOC 2011/12)</td>
+								
+								
+									</tbody>
+									</table>
+								</div>
+
+								<p><em>
+									<!-- Ngày: 05/08/2020 <br> -->
+									---<br>
+									Danh Nguyen Thanh </em>
+								</p>
+							</div>
+						</section>
+                    </section>
+
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>Let me know about you! I am pleased to be told about anything related to your experience on my website.</p>						
+						<!-- <form method="post" action="mailto:danhnt.webcontact@gmail.com" enctype="text/plain">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form> -->
+
+						<!--Disqus comment-->
+						<div id="disqus_thread"></div>
+						<script>
+							var disqus_config = function () {
+							this.page.url = document.location.href; // Replace PAGE_URL with your page's canonical URL variable
+							this.page.identifier = getPathName(); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						
+						(function() { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://danhnt.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+					
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								University of Information Technology </br>
+								Ho Chi Minh City, Vietnam<br/>
+							</li>
+							<!-- <li class="icon solid fa-phone">(+84) xx-xxx-xxx</li> -->
+							<li class="icon solid fa-envelope"><a href="mailto:danhnt.webcontact@gmail.com">danhnt.webcontact@gmail.com</a></li>
+							<li>
+								Also find me on: </br>
+								<a href="https://github.com/danhntd" class="icon brands fa-github" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://facebook.com/daniel.danhnguyen" class="icon brands fa-facebook-f" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>		
+								<a href="https://instagram.com/_thnhdanh" class="icon brands fa-instagram" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="#" class="icon brands fa-twitter" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://www.linkedin.com/in/danhnt/" class="icon brands fa-linkedin" style="font-size:30px" target="_blank"></a>							
+							</li>
+						</ul>
+
+
+						<ul class="copyright">
+							<li>&copy; 2020 Danh Nguyen Thanh. All rights reserved.</li><li>Design: HTML5 UP</li><li>Images: Unsplash</li>
+						</ul>
+						
+					</div>
+				</section>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+<!--
+	DANH NGUYEN THANH Profile
+	Solid State by HTML5 UP
+-->
+<html>
+	<head>
+		<title>DeepLabv1 - Phân đoạn ngữ nghĩa ảnh - Writings - Danh Nguyen Thanh</title>
+		<link rel="icon" type="image/ico" href="\images\logo\favicon.ico" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" >
+						<h1><a href="../index.html">DeepLabv1 </a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/aboutme.html">About me</a></li>
+								<li><a href="/writings.html">Writings</a></li>
+								<!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+								<!-- <li><a href="#">Log In</a></li> -->
+								<!-- <li><a href="#">Sign Up</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Phân đoạn ngữ nghĩa ảnh với DeepLabv1</h2>
+								<p>Giới thiệu Atrous convolution và hậu xử lý với CRFs</p>
+							</div>
+						</header>
+
+
+						<section id="one" class="wrapper style5">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">Tóm tắt</h2>
+								<p>
+									<strong>Mục tiêu:</strong> Giới thiệu tổng quan các phiên bản của mô hình DeepLab và chi tiết phiên bản DeepLabv1.
+								</p>
+
+								<p>
+									<strong>Bố cục:</strong> <br>
+									<a href="#one-extra">Tổng quan các phiên bản của mô hình DeepLab </a><br>
+									<a href="#two">1. Động lực phát triển </a><br>
+									<a href="#three">2. Đặc điểm chính của DeepLabv1</a><br>
+									<a href="#four">3. Kết quả công bố</a><br>
+								</p>
+
+								<p>
+									<strong>Tham khảo:</strong> <em>Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, Kevin Murphy, and
+									Alan L Yuille. Semantic image segmentation with deep convolutional nets and
+									fully connected crfs. arXiv preprint arXiv:1412.7062, 2014.</em>
+								</p>
+							</div>
+						</section>
+
+
+						<section id="one-extra" class="wrapper alt style1">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">Tổng quan các phiên bản của mô hình DeepLab</h2>
+
+								<p>
+									Hiện nay, mô hình tiên tiến cho bài toán phân đoạn ảnh theo ngữ nghĩa là
+									mô hình Google DeepLab (trên tập PASCAL VOC 2012). DeepLab được đề xuất từ
+									năm 2016, có tất cả 4 phiên bản (v1, v2, v3, v3+):
+									
+								</p>
+
+								<ol>
+									<li>DeepLabv1: đề xuất tích chập thưa (atrous convolution) để kiểm soát độ phân
+										giải của đặc trưng được trích xuất, còn gọi là tích chập giãn (dilated convolution)
+										và tham số của nó là tỉ lệ giãn cách, có khả năng điều chỉnh để có được vùng
+										quan sát (field of view) tốt hơn với cùng số lượng trọng số; phục hồi thông tin
+										biên vật thể bằng cách sử dụng CRFs.
+										</li>
+									<li>DeepLabv2: đề xuất kết hợp tích chập thưa với phép chiết xuất thành ASPP
+										(phép chiết xuất phân tầng không gian thưa - atrous spatial pyramid pooling)
+										giúp giữ tỉ lệ kích thước các vật thể và cải thiện độ chính xác; phục hồi thông
+										tin biên vật thể bằng cách sử dụng CRFs.
+										</li>
+									<li>DeepLabv3: tinh chỉnh và đề xuất thêm đặc trưng cấp ảnh (image-level features) 
+										vào ASPP và áp dụng chuẩn hóa theo khối (batch normalization) để huấn luyện mô hình hơn
+										</li>
+									<li>DeepLabv3+: đề xuất mở rộng DeepLabv3 bằng cách thêm một mô-đun giải
+										mã để cải thiện kết quả phân đoạn ảnh, tập trung vào vùng biên các vật thể.
+										</li>
+								</ol>
+
+								<p>
+									Ở bài này, chúng ta sẽ tìm hiểu DeepLabv1 với tích chập thưa và CRFs.
+								</p>
+
+							</div>
+						</section>
+
+
+						<section id="two" class="wrapper style3">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">1. Động lực phát triển</h2>
+								<p>
+									Trong giai đoạn DeepLabv1 được công bố, các mạng CNN lúc bấy giờ thường sử
+									dụng các phép biến đổi <em>pooling</em> và <em>striding</em> để tổng hợp thông tin và giảm kích thước
+									bản đồ đặc trưng. Các phép biến đổi này có những ưu điểm nhất định như khả năng
+									bất biến với các thay đổi nhỏ ở giá trị bản đồ đặc trưng đầu vào, giảm thiểu chi phí
+									tính toán và giúp mô hình tránh bị tình trạng <em>overfit</em>. Tuy nhiên, từ những ưu điểm
+									đó, L.-C Chen et al đã chỉ ra những hạn chế khi sử dụng các kỹ thuật này. Khi sử
+									dụng phép <em>pooling</em>, sự bất biến với các thay đổi nhỏ của bản đồ đặc trưng đầu vào sẽ
+									<strong>ảnh hưởng không tốt đến độ chính xác đến cấp độ điểm ảnh</strong> trong quá trình
+									phân đoạn - quá trình mà đáng ra cần đến độ chính xác này. Thêm vào đó, các phép
+									biến đổi làm cho đầu ra có kích thước nhỏ hơn đầu vào sẽ làm <strong>mất mát thông tin,
+									đặc biệt là thông tin về mặt ngữ cảnh (thông tin không gian)</strong>.
+								</p>
+
+							</div>
+						</section>
+
+						<section id="three" class="wrapper alt style2">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">2. Đặc điểm chính của DeepLabv1</h2>
+								<p>
+									Thúc đẩy bởi những hạn chế nói trên, DeepLabv1 đề xuất sử dụng tích chập thưa
+									(atrous convolution) và vùng điều kiện ngẫu nhiên (conditional random fields - CRFs).
+								</p>
+								
+								
+								<p>
+								<b style="color:lightblue">Tích chập thưa</b><br>
+								Trong các mô hình kiến trúc mạng CNN, việc trích xuất thông tin ngữ nghĩa của
+								dữ liệu đầu vào được thực hiện qua các lớp tích chập (convolution). Để bắt được
+								thông tin ngữ nghĩa ở nhiều mức độ không gian khác nhau, chúng ta thường sử
+								dụng tích chập với nhiều kích thước khác nhau (ví dụ 3 × 3, 5 × 5...) và hệ quả
+								của việc sử dụng bộ lọc với kích thước lớn là làm tăng số lượng tham số mà
+								mô hình phải học cũng như làm tăng chi phí tính toán. Tích chập thưa (atrous
+								convolution, hay còn gọi là dilated convolution) được giới thiệu để giải quyết vấn
+								đề này. <br><br>
+								Với cùng số lượng tham số, tích chập thưa cung cấp một vùng quan sát rộng
+								hơn, giúp nắm bắt thông tin tốt hơn về mặt ngữ cảnh hay không gian. <a href="#normal_vs_atrous_visualization">Hình 1</a>
+								minh họa cho sự khác nhau giữa hai phép tích chập, ví dụ này thực hiện phép
+								tích chập với bước nhảy (stride) bằng 1, lớp đệm (pad) bằng 0. Cụ thể, với cùng
+								một đầu ra là 3 × 3, tích chập thường nhận thông tin từ một vùng quan sát có
+								kích thước là 5 × 5, trong khi đó, tích chập thưa nhận thông tin từ một vùng
+								quan sát có kích thước lớn hơn là 7 × 7. 
+
+
+								<div>
+									<img src="\images\writings__deeplabv1\normal_vs_atrous_visualization.png" id="normal_vs_atrous_visualization" 
+									style="width:65.0%" alt=" Minh họa sự khác biệt giữa phép tích chập bình thường và phép tích chập
+									thưa." class="center" />
+									<div class="caption"><em>Hình 1.  Minh họa sự khác biệt giữa phép tích chập bình thường và phép tích chập
+										thưa. Tích chập thưa cho vùng quan sát rộng hơn với cùng số lượng tham số so với
+										tích chập thường. Nguồn ảnh: Medium</em></div>
+								</div> <br>
+
+
+								Hơn nữa, ta có thể điều chỉnh được vùng quan sát của tích chập thưa thông qua
+								một tham số, gọi là tỉ lệ giãn (dilated rate) r. Tại <a href="#normal_vs_atrous_visualization">Hình 1</a>, phép tích chập thưa
+								sử dụng r = 2, tức là giữa các giá trị của bộ lọc sẽ thêm vào 1 giá trị bằng 0,
+								đại diện cho sự giãn cách và tại các vị trí này sẽ không có tham số và không
+								phải thực hiện tính toán. Tác giả giả định rằng, không phải tất cả các điểm ảnh
+								ở cạnh nhau đều có nghĩa và do đó, chúng ta có thể khai thác thông tin từ các
+								điểm ảnh ở xa nhau và có được cái nhìn tổng quan và bao quát hơn về ngữ cảnh
+								của vật thể quan tâm. Với tham số tỉ lệ giãn r, chúng ta có thể điều chỉnh được
+								vùng quan sát tùy ý, ở phiên bản DeepLabv1, L.-C. Chen et al sử dụng r = 2 để
+								trích xuất thông tin ở một vài lớp cuối của mạng, giúp khai thác tốt hơn thông
+								tin về ngữ cảnh. Như vậy, có thể thấy rằng tích chập thường là một trường hợp
+								đặc biệt của tích chập thưa với r = 1.<br><br>
+								Để đơn giản, chúng ta giả định dữ liệu đầu vào là dữ liệu một chiều (1D), tác
+								giả giới thiệu công thức của tích chập thưa trong trường hợp này như sau:
+								<div style="text-align: center;">
+								y[i] = <span>&Sigma;</span> <sub>k = 1</sub> <sup>N</sup>
+								x [i + r &middot; k] w[k]		
+
+								</div>
+								trong đó,<br>
+								– x[i]: tín hiệu một chiều đầu vào<br>
+								– w[k]: bộ lọc với kích thước K<br>
+								– r: tham số thể hiện tỉ lệ giãn của phép tích chập thưa<br>
+								– y[i]: đầu ra của phép tích chập thưa<br><br>
+
+								Sở dĩ DeepLabv1 không thay đổi toàn bộ các lớp tích chập thường bằng tích chập
+								thưa mà chỉ thay thế ở một vài lớp cuối là bởi vì tác giả muốn kết hợp được điểm
+								mạnh của mỗi phép tích chập này. Tích chập thường cho ta vùng quan sát nhỏ
+								hơn nhưng giúp ta có thông tin chính xác hơn về vị trí (localization) một cách
+								cục bộ. Tích chập thưa cho ta vùng quan sát lớn hơn và cung cấp thông tin tổng
+								quan ngữ cảnh xung quanh vật thể (context assimilation). <br><br>
+							
+								<a href="#normal_vs_atrous_comparision">Hình 2</a> cho ta cái nhìn rõ ràng hơn về bản chất khi thực hiện hai phép tích
+								chập. Phép tích chập thường được áp dụng lên một phần của đặc trưng đầu vào
+								và sẽ phóng to (upsample) bản đồ đặc trưng ở đầu ra, điều này dẫn đến sự mất
+								mát thông tin trong quá trình giảm và tăng kích thước. Trong khi đó, tích chập
+								thưa giải quyết được vấn đề này khi có vùng quan sát rộng hơn. <br><br>
+								
+
+								<div>
+									<img src="\images\writings__deeplabv1\normal_vs_atrous_comparision.jpg" id="normal_vs_atrous_comparision" 
+									style="width:65.0%" alt=" Minh họa sự khác biệt khi sử dụng tích chập thường và tích chập thưa." class="center" />
+									<div class="caption"><em>Hình 2.  Minh họa sự khác biệt khi sử dụng tích chập thường và tích chập thưa. Giả sử ta phải thực hiện cùng một số lượng phép tính toán. Khi thực hiện phép tích
+										chập thường lên ảnh đầu vào, ta phải giảm kích thước ảnh đó H/2×W/2 rồi mới thực
+										hiện áp dụng bộ lọc 7 × 7. Trái lại, phép tích chập thưa sẽ được áp dụng trực tiếp lên
+										ảnh đầu vào H × W. Như vậy, về bản chất khi sử dụng tích chập thường, ta đang áp
+										dụng bộ lọc này lên 1/4 của ảnh đầu vào, sau đó phóng to bản đồ đặc trưng ở đầu ra,
+										còn tích chập thưa sẽ có ảnh hưởng đến toàn bộ các giá trị của ảnh đầu vào. Kết quả
+										ta được một bản đồ đặc trưng dày đặc hơn khi sử dụng tích chập thưa.
+										</em></div>
+								</div> <br>
+							</p>
+
+							<p>
+								<b style="color:lightblue">Vùng điều kiện ngẫu nhiên (conditional random fields - CRFs)</b><br>
+								Đóng góp chính của DeepLabv1 là việc sử dụng mạng CNN với phép tích chập
+								thưa nói trên, tuy nhiên, tác giả cũng thêm vào mô hình một bước hậu xử lý với
+								mục đích phục hồi thông tin vùng biên các vật thể. Hậu xử lý với CRFs - vùng
+								điều kiện ngẫu nhiên, các điểm ảnh ở gần nhau sẽ được giả định là có nhiều khả
+								năng thuộc cùng một nhãn. CRFs nhận đầu vào là giá trị bản đồ xác suất và
+								xem mỗi điểm trên bản đồ là một điểm ảnh. <br><br>
+
+								Với việc thêm vào bước hậu xử lý CRFs, DeepLabv1 không phải là một mô hình
+								end-to-end. Hơn nữa, CRFs là một phương pháp không dựa trên ngữ nghĩa, do
+								đó kết quả ngữ nghĩa phân đoạn sẽ phần nào bị ảnh hưởng, tuy nhiên so với việc
+								chỉ sử dụng mạng DCNN để phân đoạn thì CRFs đã giúp cải thiện tương đối kết
+								quả này.<br><br>
+
+							</p>
+
+
+							</div>
+						</section>
+
+						<section id="four" class="wrapper style4">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">3. Kết quả công bố</h2>
+								<p>
+									Với độ đo mIoU, tác giả công bố kết quả mô hình DeepLabv1 có sử dụng CFRs là
+									71.6% trên tập dữ liệu PASCAL VOC 2012, đạt kết quả tốt nhất thời điểm đó cho bài
+									toán phân đoạn ngữ nghĩa ảnh. <a href="#results_deeplabv1">Hình 3</a> trực quan hóa sự khác biệt khi có sử dụng
+									CRFs để hậu xử lý kết quả phân đoạn. <br><br>
+									Tổng kết lại mô hình DeepLabv1, ta có một số đặc điểm sau: DeepLabv1 được thiết
+									kế dựa trên kiến trúc mạng VGG (cụ thể là VGG-16) với tất cả các lớp kết nối đầy đủ
+									được chuyển thành các lớp tích chập. Hai lớp chiết xuất (max-pooling) cuối cùng của
+									mạng được bỏ bớt và tất cả các lớp tích chập đều được thay thế bằng tích chập thưa.
+								</p>
+
+								
+								
+
+								<div>
+									<img src="\images\writings__deeplabv1\results_deeplabv1.png" id="results_deeplabv1" 
+									style="width:65.0%" alt="Kết quả phân đoạn ngữ nghĩa ảnh của mô hình DeepLabv1." class="center" />
+									<div class="caption"><em>Hình 3. Kết quả phân đoạn ngữ nghĩa ảnh của mô hình DeepLabv1. Cột đầu tiên
+										là ảnh đầu vào, cột thứ hai là kết quả khi thực hiện phân đoạn với DeepLab không
+										sử dụng CRFs và cột cuối cùng có sử dụng CRFs. 3 dòng cuối là các kết quả xấu của
+										mô hình. Nguồn ảnh trích từ bài báo. CRFs góp phần làm sắc nét đường biên vật
+										thể so với kết quả chỉ sử dụng mạng DCNN với tích chập thưa. Trong một số trường
+										hợp ảnh bị chênh sáng quá nhiều, mô hình vẫn cho kết quả bị phân đoạn quá mịn
+										(over-segmentation) do không tận dụng được tối đa thông tin về ngữ cảnh của tấm
+										ảnh.
+										</em></div>
+								</div> <br>
+								<p><em>
+									<!-- Ngày: 24/10/2020 <br> -->
+									---<br>
+									Danh Nguyen Thanh</em>
+								</p>
+							</div>
+						</section>
+
+						
+
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>Let me know about you! I am pleased to be told about anything related to your experience on my website.</p>
+						<!-- <form method="post" action="mailto:danhnt.webcontact@gmail.com" enctype="text/plain">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form> -->
+
+						<!--Disqus comment-->
+						<div id="disqus_thread"></div>
+						<script>
+							var disqus_config = function () {
+							this.page.url = document.location.href; // Replace PAGE_URL with your page's canonical URL variable
+							this.page.identifier = getPathName(); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+
+						(function() { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://danhnt.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								University of Information Technology </br>
+								Ho Chi Minh City, Vietnam<br/>
+							</li>
+							<!-- <li class="icon solid fa-phone">(+84) xx-xxx-xxx</li> -->
+							<li class="icon solid fa-envelope"><a href="mailto:danhnt.webcontact@gmail.com">danhnt.webcontact@gmail.com</a></li>
+							<li>
+								Also find me on: </br>
+								<a href="https://github.com/danhntd" class="icon brands fa-github" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://facebook.com/daniel.danhnguyen" class="icon brands fa-facebook-f" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://instagram.com/_thnhdanh" class="icon brands fa-instagram" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="#" class="icon brands fa-twitter" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://www.linkedin.com/in/danhnt/" class="icon brands fa-linkedin" style="font-size:30px" target="_blank"></a>
+							</li>
+						</ul>
+
+
+						<ul class="copyright">
+							<li>&copy; 2020 Danh Nguyen Thanh. All rights reserved.</li><li>Design: HTML5 UP</li><li>Images: Unsplash</li>
+						</ul>
+
+					</div>
+				</section>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

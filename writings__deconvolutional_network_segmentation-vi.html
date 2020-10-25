@@ -1,0 +1,291 @@
+<!DOCTYPE HTML>
+<!--
+	DANH NGUYEN THANH Profile
+	Solid State by HTML5 UP
+-->
+<html>
+	<head>
+		<title>DeconvNet - Phân đoạn ngữ nghĩa ảnh với mạng tích chập ngược - Writings - Danh Nguyen Thanh</title>
+		<link rel="icon" type="image/ico" href="\images\logo\favicon.ico" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" >
+						<h1><a href="../index.html">Deconvolutional Network</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/aboutme.html">About me</a></li>
+								<li><a href="/writings.html">Writings</a></li>
+								<!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+								<!-- <li><a href="#">Log In</a></li> -->
+								<!-- <li><a href="#">Sign Up</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Phân đoạn ngữ nghĩa ảnh với mạng tích chập ngược - DeconvNet</h2>
+							</div>
+						</header>
+
+
+						<section id="one" class="wrapper alt style1">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">Tóm tắt</h2>
+								<p>
+									<strong>Mục tiêu:</strong> Giới thiệu kiến trúc DeconvNet cho bài toán phân đoạn ngữ nghĩa ảnh và những điểm cải tiến so với FCNs.
+								</p>
+								
+								<p>
+									<strong>Bố cục:</strong> <br>
+									<a href="#two">1. Động lực phát triển </a><br>
+									<a href="#three">2. Kiến trúc mạng DeconvNet</a><br>
+									<a href="#four">3. Kết quả công bố & Ưu nhược điểm</a><br>
+									
+								</p>
+
+								<p>
+									<strong>Tham khảo:</strong> <em>Hyeonwoo Noh, Seunghoon Hong, and Bohyung Han. Learning deconvolution
+										network for semantic segmentation. In Proceedings of the IEEE international
+										conference on computer vision, pages 1520–1528, 2015.. </em>
+								</p>
+							</div>
+						</section>
+							
+
+
+						<section id="two" class="wrapper style3">
+							<div class="inner">
+								<p>  
+								
+								</p>
+
+								<h2 class="major" style="color:lightblue">1. Động lực phát triển</h2>
+								<p>  
+									Mạng <a href="\writings__FCNs_segmentation-vi.html">FCNs</a> tuy đơn giản và đạt được 
+									những kết quả khả quan trong giai đoạn đầu nghiên cứu bài toán phân đoạn ảnh nhưng 
+									vẫn tồn tại những hạn chế nhất định. Đơn
+									cử như việc gán nhãn sai cho những điểm ảnh thuộc các vật thể quá lớn hay quá nhỏ
+									<a href="#FCN_withdraw_2">(Hình 1)</a> do không tận dụng được thông tin về vị trí của các vật thể.
+									
+								</p>
+
+								<div>
+									<img src="\images\writings__deconvolutional_network_segmentation\FCN_withdraw_2.png" id="FCN_withdraw_2" 
+									style="width:75.0%" alt="Các hạn chế của mạng FCNs." class="center" />
+									<div class="caption"><em>Hình 1. Các hạn chế của mạng FCNs.</em></div>
+								</div> <br>
+
+								<p>
+									Để giải quyết các vấn đề của FCNs, cũng vào năm 2015, H. Noh et al đã đề
+									xuất ý tưởng sử dụng một mạng tích chập ngược – Deconvolution Network để phân
+									đoạn ảnh ngữ nghĩa và đạt được độ chính xác lên đến <em>72.5%</em> trên tập dữ liệu PASCAL
+									VOC 2012.
+
+								</p>
+
+							</div>
+						</section>
+
+						<section id="three" class="wrapper alt style2">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">2. Kiến trúc mạng DeconvNet</h2>
+								<p>
+									Kế thừa mạng FCNs, Deconvolution Network được chia thành 2 phần,
+									mã hóa và giải mã (encoder và decoder, chi tiết như <a href="#deconvnet">Hình 2</a>). Phần mã hóa
+									của mạng: giống như mạng FCNs, phần này gồm các lớp tích chập (convolution) và
+									các lớp chiết xuất (pooling). Phần giải mã của mạng: đây chính là cải tiến lớn nhất của
+									kiến trúc này, thay vì tăng kích thước bản đồ nhãn lên một lần như FCNs, DeconvNet
+									chọn cách tăng kích thước dần và đối xứng với phần mã hóa của mạng. Xương sống của mạng được
+									sử dụng là kiến trúc VGG, bỏ đi các lớp kết nối đầy đủ và giữ các lớp tích
+									chập để trích xuất đặc trưng từ ảnh đầu vào.
+								</p>
+								
+								<div>
+									<img src="\images\writings__deconvolutional_network_segmentation\deconvnet.png" id="deconvnet" 
+									style="width:85.0%" alt="Kiến trúc mạng DeconvNet." class="center" />
+									<div class="caption"><em>Hình 2. Kiến trúc mạng DeconvNet. </em></div>
+								</div> <br>
+								
+								<p>
+									Các đặc trưng được <em>phóng to</em> dần ở phần giải mã nhờ vào phép unpooling (đối
+									nghịch với phép pooling ở phần mã hóa). Để thực hiện được phép unpooling, ngoài việc
+									lưu trữ giá trị khi thực hiện phép pooling, chúng ta phải nhớ thêm vị trí của giá trị
+									đó. <a href="#deconvnet_pool_unpool">Hình 3</a> minh họa việc thực hiện 2 thao tác nói trên. Đối với các khối tích chập
+									ngược, kỹ thuật được thực hiện như đã đề cập ở mạng FCNs.
+								</p>
+
+								<div>
+									<img src="\images\writings__deconvolutional_network_segmentation\deconvnet_pool_unpool.png" id="deconvnet_pool_unpool" 
+									style="width:65.0%" alt="Minh họa phép pooling và unpooling." class="center" />
+									<div class="caption"><em>Hình 3. Minh họa phép pooling và unpooling.</em></div>
+								</div> <br>
+								
+								<p>
+									Để xử lí hạn chế của mạng FCNs ở phần trước, 50 trong số 2000 vùng đề xuất
+									(bounding box) được chọn ra dựa trên giải thuật Edgebox, sau đó mạng DeconvNet sẽ
+									được áp dụng trên từng vùng được chọn đó, tất cả các kết quả sẽ được tổng hợp lại và
+									kết hợp thành một bản đồ nhãn có kích thước bằng ảnh đầu vào. Bằng cách này, vấn
+									đề về kích thước vật thể cần phát hiện được giải quyết hiệu quả. Tuy nhiên, vẫn phải
+									đề cập rằng việc tạo ra các vùng đề xuất không dựa trên ngữ nghĩa.
+								</p>
+
+							</div>
+						</section>
+
+						<section id="four" class="wrapper style4">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">3. Kết quả công bố</h2>
+								<p>
+									<a href="#deconvnet_fcn8s_comparision">Hình 4</a> so sánh sự khác nhau giữa kết quả của 2 mô hình mạng
+									thể hiện qua bản đồ nhiệt (heat map). Có thể thấy rằng, DeconvNet cho kết quả chi tiết và chính xác hơn so với
+									FCN-8s nhờ việc giải mã mạng dần qua các lớp tích chập ngược.
+									
+								</p>
+
+								<div>
+									<img src="\images\writings__deconvolutional_network_segmentation\deconvnet_fcn8s_comparision.png" id="deconvnet_fcn8s_comparision" 
+									style="width:45.0%" alt="So sánh trực quan kết quả bản đồ nhãn FCN-8s và DeconvNet." class="center" />
+									<div class="caption"><em>Hình 4.  So sánh trực quan kết quả bản đồ nhãn FCN-8s và DeconvNet.</em></div>
+								</div> <br>
+
+
+
+
+								<p>
+									Tuy nhiên, nhận thấy rằng FCNs có khả năng trích xuất đặc trưng tổng quát của
+									một vật thể, còn Deconvnet có khả năng nắm bắt được vật thể ở mức độ chi tiết hơn,
+									đồng thời Deconvnet có thể làm việc với vật thể ở nhiều kích cỡ khác nhau tốt hơn
+									FCNs, H. Noh et al đã đề xuất kết hợp kết quả của 2 mạng này lại với nhau, cho ra
+									kết quả thay đổi đáng kể và đạt 72.5% trên tập PASCAL VOC 2012. <br><br>
+									Ưu điểm khi thực hiện giải mã dần các thông tin đặc trưng ở mạng này thay vì
+									phóng to một lần như mạng FCNs được mô hình hóa tại <a href="#deconvnet_visualization">Hình 5</a>. Hơn nữa, tác giả
+									công trình này đã kết hợp được điểm mạnh của FCNs và DeconvNet để cải thiện kết
+									quả trên tập PASCAL VOC 2012. Bên cạnh đó, một nhược điểm cố hữu của các mô
+									hình sử dụng phép chiết xuất là sự mất mát thông tin đặc trưng.
+								</p>
+
+								<div>
+									<img src="\images\writings__deconvolutional_network_segmentation\deconvnet_visualization.png" id="deconvnet_visualization" 
+									style="width:65.0%" alt="Mô hình hóa ưu điểm khi thực hiện giải mã dần bản đồ đặc trưng. Thông
+									tin về vị trí dần được phục hồi qua các lần unpooling." class="center" />
+									<div class="caption"><em>Hình 5. Mô hình hóa ưu điểm khi thực hiện giải mã dần bản đồ đặc trưng. Thông
+										tin về vị trí dần được phục hồi qua các lần unpooling.</em></div>
+								</div> <br>
+
+
+								
+								<p><em>
+									<!-- Ngày: 21/10/2020 <br> -->
+									---<br>
+									Danh Nguyen Thanh</em>
+									
+								</p>
+							</div>
+						</section>
+
+						
+
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>Let me know about you! I am pleased to be told about anything related to your experience on my website.</p>						
+						<!-- <form method="post" action="mailto:danhnt.webcontact@gmail.com" enctype="text/plain">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form> -->
+
+						<!--Disqus comment-->
+						<div id="disqus_thread"></div>
+						<script>
+							var disqus_config = function () {
+							this.page.url = document.location.href; // Replace PAGE_URL with your page's canonical URL variable
+							this.page.identifier = getPathName(); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						
+						(function() { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://danhnt.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+					
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								University of Information Technology </br>
+								Ho Chi Minh City, Vietnam<br/>
+							</li>
+							<!-- <li class="icon solid fa-phone">(+84) xx-xxx-xxx</li> -->
+							<li class="icon solid fa-envelope"><a href="mailto:danhnt.webcontact@gmail.com">danhnt.webcontact@gmail.com</a></li>
+							<li>
+								Also find me on: </br>
+								<a href="https://github.com/danhntd" class="icon brands fa-github" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://facebook.com/daniel.danhnguyen" class="icon brands fa-facebook-f" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>		
+								<a href="https://instagram.com/_thnhdanh" class="icon brands fa-instagram" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="#" class="icon brands fa-twitter" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://www.linkedin.com/in/danhnt/" class="icon brands fa-linkedin" style="font-size:30px" target="_blank"></a>							
+							</li>
+						</ul>
+
+
+						<ul class="copyright">
+							<li>&copy; 2020 Danh Nguyen Thanh. All rights reserved.</li><li>Design: HTML5 UP</li><li>Images: Unsplash</li>
+						</ul>
+						
+					</div>
+				</section>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

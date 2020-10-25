@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<!--
+	DANH NGUYEN THANH Profile
+	Solid State by HTML5 UP
+-->
+<html>
+	<head>
+		<title>DeepLabv2 - Phân đoạn ngữ nghĩa ảnh - Writings - Danh Nguyen Thanh</title>
+		<link rel="icon" type="image/ico" href="\images\logo\favicon.ico" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" >
+						<h1><a href="../index.html">DeepLabv2</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/aboutme.html">About me</a></li>
+								<li><a href="/writings.html">Writings</a></li>
+								<!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+								<!-- <li><a href="#">Log In</a></li> -->
+								<!-- <li><a href="#">Sign Up</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Phân đoạn ngữ nghĩa ảnh với DeepLabv2</h2>
+								<p>Giới thiệu mô-đun Atrous Spatial Pyramid Pooling</p>
+							</div>
+						</header>
+
+
+						<section id="one" class="wrapper alt style1">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">Tóm tắt</h2>
+								<p>
+									<strong>Mục tiêu:</strong> Giới thiệu DeepLabv2 với cải tiến lớn nhất là mô-đun Atrous Spatial Pyramid Pooling.
+								</p>
+								
+								<p>
+									<strong>Bố cục:</strong> <br>
+									<a href="#two">1. Động lực phát triển </a><br>
+									<a href="#three">2. Đặc điểm chính DeepLabv2</a><br>
+									<a href="#four">3. Kết quả công bố </a><br>
+								</p>
+
+								<p>
+									<strong>Tham khảo:</strong> <em>Liang-Chieh Chen, George Papandreou, Iasonas Kokkinos, 
+										Kevin Murphy, andAlan L Yuille. Deeplab: Semantic image segmentation with deep convolutionalnets, 
+										atrous convolution, and fully connected crfs.
+										IEEE transactions on patternanalysis and machine intelligence, 40(4):834–848, 2017. </em>
+								</p>
+							</div>
+						</section>
+							
+
+
+						<section id="two" class="wrapper style3">
+							<div class="inner">
+								<p>  
+								
+								</p>
+
+								<h2 class="major" style="color:lightblue">1. Động lực phát triển</h2>
+								<p>  
+								
+									Như đã đề cập ở DeepLabv1, mô hình hiện tại sử dụng kiến trúc DCNN 
+									(nền tảng là VGG-16) kết hợp với tích chập thưa và hậu xử lí bằng 
+									phương pháp CRFs, tuy nhiên kết quả phân đoạn chưa chưa tận dụng được 
+									tối đa thông tin về ngữ cảnh xung quanh vật thể, dẫn đến việc chia 
+									nhỏ các phần của một vật thể. Thúc đẩy bởi việc thiếu thông tin ngữ 
+									cảnh, chính tác giả L.-C. Chen đã đề xuất mô hình DeepLabv2. Điểm 
+									cải tiến của mô hình mới là sử dụng mô-đun ASPP (phép chiết xuất 
+									phân tầng không gian thưa - atrous spatial pyramid pooling) nhằm 
+									đối diện với vấn đề làm sao để nắm bắt thông tin ngữ cảnh chính 
+									xác hơn. Đồng thời tác giả cũng đề xuất thay đổi kiến trúc DCNN 
+									nền tảng, DeepLabv2 sử dụng Resnet làm xương 
+									sống để trích xuất đặc trưng.	
+								</p>
+
+							</div>
+						</section>
+
+						<section id="three" class="wrapper alt style2">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">2. Đặc điểm chính DeepLabv2</h2>
+								<p>
+									Chúng ta sẽ tìm hiểu DeepLabv2 với thay đổi lớn nhất là sự góp mặt của mô-đunASPP, 
+									song song với việc thay đổi kiến trúc 
+									DCNN thành Resnet và tinh chỉnh nguyên tắc học (learning rate policy):
+								</p>
+								
+								<p>
+									Với DeepLabv1, việc trích xuất đặc trưng sử dụng tích chập thưa chỉ với 
+									một tỉ lệ giãn duy nhất, nắm bắt được phần nào thông tin về ngữ cảnh. 
+									Tuy nhiên, các vật thể có kích thước đa dạng dẫn đến việc huấn luyện mô 
+									hình chỉ với một kích cỡ đặc trưng sẽ làm cho mô hình hoạt động không 
+									hiệu quả khi làm việc với cùng vật thể đó nhưng ở kích thước khác. ASPP 
+									về bản chất là thực hiện nhiều phép tích chập thưa song song với nhau, 
+									cho phép mô hình học được đặc trưng của một vật thể trong tương quan với 
+									ngữ cảnh xung quanh nó.
+
+									Lợi ích của tích chập thưa đã được đề cập ở phần trước là giúp tăng vùng 
+									quan sát để nắm bắt thông tin ngữ cảnh. 
+									Ở phần này, ASPP sẽ là sự kết hợp của 4 phép tích chập thưa với tỉ lệ 
+									giãn r = {6, 12, 18, 24} (<a href="#ASPP_deeplabv2">Hình 1</a>), nghĩa là với 
+									mỗi điểm của đặc trưng ở đầu ra, thông tin đầu vào sẽ được trích xuất bởi 
+									4 vùng quan sát khác nhau và tổng hợp lại bằng ghép kết hợp (concatenate).
+								</p>
+								<div>
+									<img src="\images\writings__deeplabv2\ASPP_deeplabv2.png" id="ASPP_deeplabv2" 
+									style="width:65.0%" alt="Mô hình hóa mô-đun ASPP được sử dụng trong DeepLabv2." class="center" />
+									<div class="caption"><em>Hình 1. Mô hình hóa mô-đun ASPP được sử dụng trong DeepLabv2.</em></div>
+								</div> <br>
+								
+								<p>
+									Tại <a href="#ASPP_deeplabv2">Hình 1</a>, Bản đồ đặc trưng đầu vào sẽ được áp dụng 4 bộ lọc là tích 
+									chập thưa với 4 kích thước khác nhau r = {6, 12, 18, 24} để trích xuất đặc 
+									trưng, kết quả đầu ra sau đó sẽ được tổng hợp lại bằng kết hợp. 
+									Như vậy có thể nói, mỗi điểm ở bản đồ đặc trưng đầu ra sau khi thực hiện mô-đun 
+									ASPP là ảnh hưởng của 4 vùng quan sát với các kích thước khác nhau trước đó, giúp 
+									cho việc nắm bắt thông tin ngữ cảnh được nhiều hơn và tổng quát hơn.
+								</p>
+
+							</div>
+						</section>
+
+						<section id="four" class="wrapper style4">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">3. Kết quả công bố</h2>
+								<p>
+									<a href="#results_deeplabv2">Hình 2</a> được tác giả công bố thể hiện sự khác biệt khi sử dụng mô-đun ASPP ở các tỉ lệ 
+									khác nhau, từ đó thấy được vai trò của mô-đun này khi thêm vào mô hình mạng DeepLabv2.		
+								</p>
+								<div>
+									<img src="\images\writings__deeplabv2\results_deeplabv2.png" id="results_deeplabv2" 
+									style="width:65.0%" alt="Kết quả thử nghiệm so sánh 3 phiên bản của tác giả công bố." class="center" />
+									<div class="caption"><em>Hình 2. Kết quả thử nghiệm so sánh 3 phiên bản của tác giả công bố.</em></div>
+								</div> <br>
+								<p>
+								Với ảnh đầu vào ở (a), LargeFOV (b) là phiên bản sử dụng bộ lọc 3 × 3 với tỉ lệ giãn r = 12, 
+								ASPP-S (c) là phiên bản sử dụng mô-đun ASPP với r = {2, 4, 8, 12}, và ASPP-L (d) 
+								là phiên bản sử dụng mô-đun ASPP với r = {6, 12, 18, 24}. Kết quả cho thấy rằng mô-đun ASPP-L khả năng 
+								phân đoạn tốt nhất (kết quả công bố 71.57% mIoU - có hậu xử lí với CRFs) trong các phiên bản, thể hiện 
+								khả năng ưu việt của ASPP với tỉ lệ lớn do tác giả thực nghiệm chứng minh.
+								</p>
+								<p><em>
+									<!-- Ngày: 25/10/2020 <br> -->
+									---<br>
+									Danh Nguyen Thanh</em>
+								</p>
+							</div>
+						</section>
+
+
+                    </section>
+
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>Let me know about you! I am pleased to be told about anything related to your experience on my website.</p>						
+						<!-- <form method="post" action="mailto:danhnt.webcontact@gmail.com" enctype="text/plain">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form> -->
+
+						<!--Disqus comment-->
+						<div id="disqus_thread"></div>
+						<script>
+							var disqus_config = function () {
+							this.page.url = document.location.href; // Replace PAGE_URL with your page's canonical URL variable
+							this.page.identifier = getPathName(); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						
+						(function() { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://danhnt.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+					
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								University of Information Technology </br>
+								Ho Chi Minh City, Vietnam<br/>
+							</li>
+							<!-- <li class="icon solid fa-phone">(+84) xx-xxx-xxx</li> -->
+							<li class="icon solid fa-envelope"><a href="mailto:danhnt.webcontact@gmail.com">danhnt.webcontact@gmail.com</a></li>
+							<li>
+								Also find me on: </br>
+								<a href="https://github.com/danhntd" class="icon brands fa-github" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://facebook.com/daniel.danhnguyen" class="icon brands fa-facebook-f" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>		
+								<a href="https://instagram.com/_thnhdanh" class="icon brands fa-instagram" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="#" class="icon brands fa-twitter" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://www.linkedin.com/in/danhnt/" class="icon brands fa-linkedin" style="font-size:30px" target="_blank"></a>							
+							</li>
+						</ul>
+
+
+						<ul class="copyright">
+							<li>&copy; 2020 Danh Nguyen Thanh. All rights reserved.</li><li>Design: HTML5 UP</li><li>Images: Unsplash</li>
+						</ul>
+						
+					</div>
+				</section>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

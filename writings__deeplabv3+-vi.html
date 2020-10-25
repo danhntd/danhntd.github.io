@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<!--
+	DANH NGUYEN THANH Profile
+	Solid State by HTML5 UP
+-->
+<html>
+	<head>
+		<title>DeepLabv3+ - Phân đoạn ngữ nghĩa ảnh - Writings - Danh Nguyen Thanh</title>
+		<link rel="icon" type="image/ico" href="\images\logo\favicon.ico" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" >
+						<h1><a href="../index.html">DeepLabv3+</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/aboutme.html">About me</a></li>
+								<li><a href="/writings.html">Writings</a></li>
+								<!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+								<!-- <li><a href="#">Log In</a></li> -->
+								<!-- <li><a href="#">Sign Up</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Phân đoạn ngữ nghĩa ảnh với DeepLabv3+</h2>
+								<p>Kiến trúc mã hóa-giải mã với Atrous separable convolution</p>
+							</div>
+						</header>
+
+
+						<section id="one" class="wrapper alt style2">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">Tóm tắt</h2>
+								<p>
+									<strong>Mục tiêu:</strong> Giới thiệu DeepLabv3+ với kiến trúc mã hóa-giải mã sử dụng Atrous Separable Convolution.
+								</p>
+								
+								<p>
+									<strong>Bố cục:</strong> <br>
+									<a href="#two">1. Động lực phát triển </a><br>
+									<a href="#three">2. Đặc điểm chính DeepLabv3+</a><br>
+									<a href="#four">3. Kết quả công bố </a><br>
+								</p>
+
+								<p>
+									<strong>Tham khảo:</strong> <em>Liang-Chieh Chen, Yukun Zhu, George Papandreou, Florian Schroff, and Hartwig
+										Adam. Encoder-decoder with atrous separable convolution for semantic image segmentation. In Proceedings of the European conference on computer vision (ECCV),
+										pages 801–818, 2018.
+										</em>
+								</p>
+							</div>
+						</section>
+							
+
+
+						<section id="two" class="wrapper style7">
+							<div class="inner">
+								<p>  
+									Đây là phiên bản cuối cùng trong chuỗi mô hình DeepLab, là tổng hợp những điểm
+									mạnh và loại bỏ những điểm yếu từ mô hình trước, đồng thời cũng có nhiều cải tiến
+									đáng kể.
+								</p>
+
+								<h2 class="major" style="color:lightblue">1. Động lực phát triển</h2>
+								<p>  
+									Sau 4 năm kể từ khi mô hình DeepLab được công bố lần đầu tiên, mô hình này đang
+									dần được hoàn thiện hơn. Khi nhận thấy kiến trúc mã hóa-giải mã (encoder-decoder)
+									có khả năng khôi phục thông tin về mặt không gian (như DeconvNet đã làm) và
+									mô-đun ASPP có khả năng nắm bắt thông tin ngữ cảnh đa kích thước, L.-C. Chen et
+									al đã đề xuất kết hợp chúng lại thành một mô hình - DeepLabv3+. Thêm nữa, để giải
+									quyết vấn đề về chi phí tính toán, tác giả đề xuất sử dụng tích chập thưa tách rời
+									(atrous seprable convolution). Với các điều chỉnh này, DeepLabv3+ hứa hẹn sẽ cho kết
+									quả phân đoạn ngữ nghĩa tốt hơn.
+
+								</p>
+
+							</div>
+						</section>
+
+						<section id="three" class="wrapper alt style2">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">2. Kiến trúc mạng DeconvNet</h2>
+								<p>
+									Như đã đề cập, có 3 yếu tố quan trọng làm nên sự thành công của DeepLabv3+
+									khi phân đoạn ngữ nghĩa ảnh, cụ thể như sau:
+								</p>
+
+								<ol>
+									<b style="color:lightblue"><li>Kiến trúc mã hóa-giải mã (encoder-decoder)</li></b><br>
+
+									DeepLabv3+ sử dụng kiến trúc mã hóa-giải mã (<a href="#deeplabv3+_model">Hình 1</a>), mỗi mô-đun đảm
+									nhiệm một nhiệm vụ riêng biệt: mô-đun mã hóa sẽ trích xuất thông tin ngữ cảnh
+									bằng cách sử dụng tích chập thưa ở nhiều tỉ lệ khác nhau thông qua ASPP, môđun giải mã sẽ khôi phục thông tin bức ảnh và cho đầu ra là một bản đồ nhãn.
+									Đóng góp lớn nhất của DeepLabv3+ là việc thêm vào mô hình mô-đun giải mã,
+									còn mô-đun mã hóa chính là DeepLabv3. Ở phần giải mã, mô hình sẽ kết hợp
+									(concatenate) giữa thông tin đặc trưng cấp cao trích xuất được ở cuối mô-đun
+									mã hóa với các thông tin đặc trưng cấp thấp ở phần đầu của mạng, nhằm tối
+									ưu hóa khả năng nắm bắt thông tin về ngữ nghĩa. Do đó, mô hình có khả năng
+									phân đoạn tốt, đặc biệt là ở vùng biên vật thể.<br><br>
+									
+									<div>
+										<img src="\images\writings__deeplabv3+\deeplabv3+_model.png" id="deeplabv3+_model" 
+										style="width:80.0%" alt=" Mô hình tổng quát Google DeepLabv3+ được tác giả công bố với kiến trúc
+										mã hóa-giải mã." class="center" />
+										<div class="caption"><em>Hình 1. Mô hình tổng quát Google DeepLabv3+ được tác giả công bố với kiến trúc
+											mã hóa-giải mã. Mô-đun giải mã chính là đóng góp quan trọng của mô hình này, giúp
+											kết hợp thông tin đặc trưng cấp cao và cấp thấp để tái tạo lại bức ảnh dưới
+											dạng bản đồ nhãn.</em></div>
+									</div> <br>
+
+									<b style="color:lightblue"><li>Mô-đun ASPP (atrous spatial pyramid pooling - nhắc lại)</li></b><br>
+									Nếu như DeepLabv3 có sự lựa chọn trong việc sử dụng cascading hay parallel
+									(ASPP) thì DeepLabv3+ đã quyết định chọn duy nhất mô-đun ASPP để trích xuất đặc 
+									trưng bởi sự ưu việt của nó đã được chứng minh ở công bố trước (DeepLabv3).
+									Mô-đun ASPP (như <a href="#aspp_deeplabv3">Hình 2</a>) gồm có 1 lớp tích chập 1 × 1 và 3 lớp tích chập
+									thưa với tỉ lệ r = {6, 12, 18} để trích xuất thông tin ngữ nghĩa và thêm vào đó là
+									một phép chiết xuất trung bình (global average pooling) giúp trích xuất thông
+									tin ngữ cảnh ở mức độ tổng quát nhất.<br><br>
+									<div>
+										<img src="\images\writings__deeplabv3\aspp_deeplabv3.png" id="aspp_deeplabv3" 
+										style="width:65.0%" alt="Mô-đun ASPP được chọn sử dụng ở DeepLabv3+ để trích xuất đặc trưng." class="center" />
+										<div class="caption"><em>Hình 2. Mô-đun ASPP được chọn sử dụng ở DeepLabv3+ để trích xuất đặc trưng
+											vì khả năng giải quyết vấn đề kích thước vật thể. </em></div>
+									</div> <br>
+									
+									<b style="color:lightblue"><li>Tích chập thưa tách rời (atrous separable convolution)</li></b><br>
+
+									Tích chập tách rời là một kĩ thuật tích chập cho phép giảm thiểu chi phí tính
+									toán khi thực hiện các phép tích chập so với tích chập thông thường. Đúng như
+									cái tên của nó, tích chập tách rời được tách ra thành 2 phần: tích chập depthwise
+									và tích chập pointwise.<br><br>
+									Chúng ta hãy so sánh thử phép tích chập thường với phép tích chập tách rời này
+									qua một ví dụ:<br><br>
+
+									• <b>Đầu vào:</b> bản đồ đặc trưng kích thước 12 × 12 × 3<br>
+									• <b>Thực hiện:</b> áp dụng 3 bộ lọc kích thước 5 × 5 × 1<br>
+									• <b>Đầu ra:</b> bản đồ đặc trưng kích thước 8 × 8 × 256<br><br>
+									
+									Đối với phép tích chập thường (<a href="#normal_conv">Hình 3</a>), để có được đầu ra như yêu cầu
+									của ví dụ trên ta sẽ phải thực hiện tích chập khối 5 × 5 × 3 một số lượng 256 lần để có được đầu 
+									ra mong muốn. Số lượng tham số sẽ là 5 × 5 × 3 × 256 =
+									<b style="color:lightblue">19,200 (tham số)</b>. Số lượng phép nhân (multiplications) trường hợp này sẽ là
+									5 × 5 × 3 × 256 × (8 × 8) = <b style="color:lightblue">1,228,800 (phép nhân)</b>.<br><br>
+									<div>
+										<img src="\images\writings__deeplabv3+\normal_conv.png" id="normal_conv" 
+										style="width:65.0%" alt="Mô hình hóa phép tích chập thường." class="center" />
+										<div class="caption"><em>Hình 3. Mô hình hóa phép tích chập thường.</em></div>
+									</div> <br>
+
+
+									Trong khi đó, tích chập tách rời (<a href="#separable_conv">Hình 4</a>) thực hiện 2 bước riêng biệt. Ở bước
+									depthwise, bộ lọc 5 × 5 × 3 được áp lên bản đồ đặc trưng đầu vào cho ra bản
+									đồ có kích thước 8 × 8 × 3. Sau đó, bước pointwise sẽ thực hiện áp 256 khối
+									tích chập 1 × 1 để có đầu ra theo kích thước yêu cầu. Số lượng tham số sẽ là
+									(5×5×3)+(1×1×3×256) = <b style="color:lightblue">843 (tham số)</b>. Số lượng phép nhân (multiplications)
+									trường hợp này sẽ là (5 × 5 × 3 × 8 × 8) + (1 × 1 × 3 × 256 × 8 × 8) = <b style="color:lightblue">53,952
+									(phép nhân)</b>. Ta thấy rằng, số lượng tham số và số phép tính phải thực hiện giảm đi khoảng
+									<b style="color:lightblue">22 lần</b> so với tích chập thông thường. <br> <br>
+									
+									<div>
+										<img src="\images\writings__deeplabv3+\separable_conv.png" id="separable_conv" 
+										style="width:65.0%" alt="Mô hình hóa phép tích chập tách rời." class="center" />
+										<div class="caption"><em>Hình 4. Mô hình hóa phép tích chập tách rời.</em></div>
+									</div> <br>
+
+									Về bản chất, phép tích chập thường biến đổi đầu vào 256 lần với 256 bộ lọc
+									5 × 5 × 3 khác nhau, còn tích chập tách rời chỉ biến đổi đầu vào 1 lần duy nhất ở
+									bước depthwise, còn ở bước pointwise chỉ đơn giản là biến đổi kết quả của bước
+									depthwise 256 lần bằng 256 khối tích chập 1 × 1.<br><br>
+
+
+									Không dừng lại ở đó, DeepLabv3+ sử dụng tích chập tách rời với phần depthwise
+									là tích chập thưa với tỉ lệ r = 2 (như <a href="#atrous_separable_conv">Hình 5</a>, vừa tận dụng được khả năng
+									của tích chập thưa vừa giảm thiểu chi phí nhờ tích chập tách rời. DeepLabv3+
+									thay thế tất cả các lớp tích chập bình thường thành tích chập thưa tách rời. Tuy
+									nhiên tích chập thưa tách rời cũng có điểm yếu của nó, đối với các mô hình có
+									ít tham số, việc giảm bớt số lượng tham số nhờ phép tích chập thưa tách rời có
+									thể dẫn đến việc thất bại khi huấn luyện mô hình.<br><br>
+
+									<div>
+										<img src="\images\writings__deeplabv3+\atrous_separable_conv.png" id="atrous_separable_conv" 
+										style="width:65.0%" alt="DeepLabv3+ sử dụng tích chập thưa tách rời." class="center" />
+										<div class="caption"><em>Hình 5. DeepLabv3+ sử dụng tích chập thưa tách rời. Hình ảnh công bố từ [4]. (a)
+											là bước depthwise, (b) là bước pointwise, (c) là việc áp dụng tích chập thưa với r = 2
+											cho bước depthwise của phép tích chập.</em></div>
+									</div> <br>
+
+								</ol>
+							
+
+								
+							</div>
+						</section>
+
+						<section id="four" class="wrapper style4">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">3. Kết quả công bố</h2>
+								<p>
+									DeepLabv3+ đạt kết quả state-of-the-art trên 2 tập dữ liệu là PASCAL VOC
+									2012 (với 87.8% mIoU và 89.0% mIoU khi có huấn luyện tăng cường với tập JFT)
+									và CityScapes (với 82.1% mIoU). Một số kết quả trên tập dữ liệu PASCAL VOC 2012
+									của DeepLabv3 được mô hình hóa tại <a href="#deeplabv3+_results">Hình 6</a>.
+
+								</p>
+								<div>
+									<img src="\images\writings__deeplabv3+\deeplabv3+_results.png" id="deeplabv3+_results" 
+									style="width:65.0%" alt="Một số kết quả trên tập dữ liệu PASCAL VOC 2012 của DeepLabv3+." class="center" />
+									<div class="caption"><em>Hình 6. Một số kết quả trên tập dữ liệu PASCAL VOC 2012 của DeepLabv3+.</em></div>
+								</div> <br>
+
+
+								Tổng kết lại, DeepLabv3+ có một số điểm nổi bật sau: <br>(i) Sử dụng kiến trúc mã
+								hóa-giải mã, mô-đun mã hóa là DeepLabv3 và mô-đun giải mã được đề xuất kết hợp
+								thông tin đặc trưng cấp cao và đặc trưng cấp thấp; <br>(ii) Sử dụng tích chập thưa, đánh
+								đổi giữa độ chính xác và thời gian thực thi; <br>(iii) Sử dụng tích chập thưa tách rời cho
+								cả mô-đun ASPP và mô-đun giải mã, giúp giảm thiểu chi phí tính toán; <br>(iv) Đạt kết
+								quả state-of-the-art trên 2 tập dữ liệu chuẩn PASCAL VOC 2012 và CityScapes khi
+								công bố.<br><br>
+								
+
+								<p><em>
+									<!-- Ngày: 25/10/2020 <br> -->
+									---<br>
+									Danh Nguyen Thanh</em>
+								</p>
+							</div>
+						</section>
+
+
+                    </section>
+
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>Let me know about you! I am pleased to be told about anything related to your experience on my website.</p>						
+						<!-- <form method="post" action="mailto:danhnt.webcontact@gmail.com" enctype="text/plain">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form> -->
+
+						<!--Disqus comment-->
+						<div id="disqus_thread"></div>
+						<script>
+							var disqus_config = function () {
+							this.page.url = document.location.href; // Replace PAGE_URL with your page's canonical URL variable
+							this.page.identifier = getPathName(); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						
+						(function() { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://danhnt.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+					
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								University of Information Technology </br>
+								Ho Chi Minh City, Vietnam<br/>
+							</li>
+							<!-- <li class="icon solid fa-phone">(+84) xx-xxx-xxx</li> -->
+							<li class="icon solid fa-envelope"><a href="mailto:danhnt.webcontact@gmail.com">danhnt.webcontact@gmail.com</a></li>
+							<li>
+								Also find me on: </br>
+								<a href="https://github.com/danhntd" class="icon brands fa-github" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://facebook.com/daniel.danhnguyen" class="icon brands fa-facebook-f" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>		
+								<a href="https://instagram.com/_thnhdanh" class="icon brands fa-instagram" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="#" class="icon brands fa-twitter" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://www.linkedin.com/in/danhnt/" class="icon brands fa-linkedin" style="font-size:30px" target="_blank"></a>							
+							</li>
+						</ul>
+
+
+						<ul class="copyright">
+							<li>&copy; 2020 Danh Nguyen Thanh. All rights reserved.</li><li>Design: HTML5 UP</li><li>Images: Unsplash</li>
+						</ul>
+						
+					</div>
+				</section>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

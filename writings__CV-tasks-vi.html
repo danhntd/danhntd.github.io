@@ -1,0 +1,353 @@
+<!DOCTYPE HTML>
+<!--
+	DANH NGUYEN THANH Profile
+	Solid State by HTML5 UP
+-->
+<html>
+	<head>
+		<title>Các bài toán cơ bản của Thị giác máy tính - Writings - Danh Nguyen Thanh</title>
+		<link rel="icon" type="image/ico" href="\images\logo\favicon.ico" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Page Wrapper -->
+			<div id="page-wrapper">
+
+				<!-- Header -->
+					<header id="header" >
+						<h1><a href="../index.html">Tasks in Computer Vision</a></h1>
+
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="/index.html">Home</a></li>
+								<li><a href="/aboutme.html">About me</a></li>
+								<li><a href="/writings.html">Writings</a></li>
+								<!-- <li><a href="/portfolio.html">Portfolio</a></li> -->
+								<!-- <li><a href="#">Log In</a></li> -->
+								<!-- <li><a href="#">Sign Up</a></li> -->
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<!-- Wrapper -->
+					<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Các bài toán cơ bản của thị giác máy tính</h2>
+								<p> </p>
+							</div>
+						</header>
+
+
+						<section id="one" class="wrapper alt style1">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">Tóm tắt</h2>
+								<p>
+									<strong>Mục tiêu:</strong> Mang lại cái nhìn tổng quan về các vấn đề cơ bản mà thị giác máy tính đang giải quyết, 
+									làm tiền đề để tiếp nhận các bài toán phức tạp trong lĩnh vực này.
+								</p>
+								
+								<p>
+									<strong>Bố cục:</strong> <br>
+									<a href="#two">1. Bài toán phân loại ảnh (Image Classification)</a><br>
+									<a href="#three">2. Bài toán phát hiện và định vị vật thể (Object Detection & Localization)</a><br>
+									<a href="#four">3. Bài toán phân đoạn ảnh (Image Segmentation)</a><br>
+									<a href="#five">4. So sánh đặc điểm các bài toán trên</a><br>
+									
+								</p>
+							</div>
+						</section>
+							
+
+
+						<section id="two" class="wrapper style3">
+							<div class="inner">
+								<p> Thị giác máy tính (Computer Vision) là một lĩnh vực con quan trọng của trí tuệ nhân tạo (Artificial Intelligence) 
+									với mục tiêu <strong><em>dạy</em></strong> cho máy tính thực hiện được các tác vụ mà mắt người có thể thực hiện, hiểu được các hình ảnh 
+									như cách mà mắt người nhìn nhận thế giới xung quanh. Các bài toán có thể kể đến như phân loại ảnh, phát hiện và 
+									định vị vật thể trong ảnh hay phân đoạn ảnh đều là các vấn đề mà thị giác máy tính đã và đang giải quyết. 
+									Phần này sẽ giúp các bạn phân biệt và làm rõ đặc điểm của các bài toán vừa nêu. </p>
+
+								<h2 class="major" style="color:lightblue">1. Bài toán phân loại ảnh (image classification)</h2>
+								<p>
+									Phân loại ảnh (Image Classification) là nhiệm vụ phổ biến và cơ bản trong các bài toán của thị giác máy tính. 
+									Mục tiêu chính của bài toán này là phân loại một hình ảnh đầu vào (input) thành một nhãn (label) ở đầu ra (output). <br><br> 
+									
+									Như vậy, với mỗi ảnh đầu vào mô hình phân lớp sẽ trả về một nhãn tương ứng ở đầu ra, cho biết ảnh đó thuộc loại 
+									vật thể nào. Trong ví dụ ở <a href="#image_classification">Hình 1</a>, ta biết ảnh được kiểm tra là ảnh có chứa một con 
+									mèo. Tuy nhiên, ta không biết thêm bất kì thông tin nào về con mèo đó (như vị trí hay màu sắc).</p>
+
+								<div>
+									<img src="\images\writings__CV_tasks\image_classification.png" id="image_classification" 
+									style="width:65.0%" alt="Ví dụ mô hình phân loại ảnh." class="center" />
+									<div class="caption"><em>Hình 1. Ví dụ mô hình phân loại ảnh.</em></div>
+								</div>
+								<br>
+								<p>
+									Một cách tổng quát, mô hình phân loại ảnh sẽ có đầu vào là một ảnh và một danh sách các nhãn có thể gán 
+									cho ảnh đó và đầu ra là tỉ lệ mà ảnh đó thuộc về các nhãn, và ảnh này sẽ được gán nhãn có tỉ lệ cao nhất 
+									như hình <a href="#image_classification_general">Hình 2</a>. </p>
+
+								<div>
+									<img src="\images\writings__CV_tasks\image_classification_general.png" id="image_classification_general" 
+									style="width:65.0%" alt="Ví dụ mô hình phân loại ảnh tổng quát." class="center" />
+									<div class="caption"><em>Hình 2. Ví dụ mô hình phân loại ảnh tổng quát.</em></div>
+								</div>
+								<br>
+								<p>
+									Cho đến hiện tại, bài toán phân loại ảnh có nhiều ứng dụng trong thực tế như: phân loại biển báo giao thông, 
+									phân loại hàng hóa, phân loại ảnh chụp vệ tinh... Một số tập dữ liệu chuẩn thường được sử dụng cho bài toán 
+									này có thể kể đến là <a href="http://www.image-net.org/">ImageNet</a>, MNIST, MS-COCO hay CIFAR-10. Đơn cử 
+									với tập ImageNet, độ chính xác của mô hình tiên tiến nhất (state of the art) đã đạt 
+									<a href="https://paperswithcode.com/sota/image-classification-on-imagenet">88.5%</a>.</p>
+							</div>
+						</section>
+
+						<section id="three" class="wrapper alt style2">
+							<div class="inner">
+								<h2 class="major" style="color:lightblue">2. Bài toán phát hiện và định vị vật thể (object detection & localization)</h2>
+								<p>Phát hiện vật thể trong ảnh (Object Detection and Localization) gồm có 2 phần là nhận diện các vật thể 
+									và định vị những vật thể đó trong bức ảnh. Có thể chia bài toán này ra làm 2 loại:</p>
+								<ul>
+									<li ><p ><strong style="color:lightblue" >Phát hiện một vật thể trong ảnh (Object Localization)</strong></p>
+										<p>
+											Đối với loại bài toán này, ta có đầu vào là hình ảnh chứa (hoặc không chứa) đối tượng cần quan tâm và 
+											đầu ra là vị trí tương đối của đối tượng nếu đối tượng tồn tại trong bức 
+											ảnh như <a href="#object_localization">Hình 3</a>.
+										</p>
+
+										<div>
+											<img src="\images\writings__CV_tasks\object_localization.png" id="object_localization" 
+											style="width:65.0%" alt="Minh họa phát hiện một vật thể trong ảnh." class="center" />
+											<div class="caption"><em>Hình 3. Minh họa phát hiện một vật thể trong ảnh. Đầu ra của bài toán này 
+												cho ta biết ảnh đầu vào có chứa một vật thể giống con mèo và vị trí tương đối của nó trong 
+												bức ảnh thông qua một khung bao (bounding box).</em></div>
+										</div>
+										<br>
+									</li>
+									<li><p><strong style="color:lightblue">Phát hiện nhiều vật thể trong ảnh (Object Detection)</strong></p>
+										<p>
+											Khác với loại bài toán định vị vật thể, ở đây ta có đầu vào là hình ảnh chứa (hoặc không chứa) 
+											<strong>nhiều đối tượng</strong> và đầu ra là các nhãn cùng với vị trí tương đối tương ứng của 
+											từng đối tượng được phát hiện. Có thể nói, bài toán <em>Object Detection</em> gồm nhiều lần thực 
+											hiện <em>Object Localization</em>.
+										</p>
+
+										<div>
+											<img src="\images\writings__CV_tasks\object_detection.png" id="object_detection" 
+											style="width:65.0%" alt="Minh họa phát hiện nhiều vật thể trong ảnh." class="center" />
+											<div class="caption"><em>Hình 4. Minh họa phát hiện nhiều vật thể trong ảnh.</em></div>
+										</div>
+										<br>
+									</li>
+								</ul>
+
+								<p>
+								Trong thực tế, phát hiện vật thể trong ảnh đã được ứng dụng rộng rãi để giải quyết các bài toán như phát 
+								hiện khuôn mặt, phát hiện biển báo giao thông, phát hiện người đi bộ (cho xe tự hành), đếm người trong 
+								đám đông, chống trộm vv. Có nhiều tập dữ liệu chuẩn thường dùng cho bài toán này là, đơn cử như tập 
+								<a href="https://paperswithcode.com/task/object-detection">MS-COCO</a> - một trong những tập dữ liệu 
+								được sử dụng phổ biến cho bài toán phát hiện vật thể.
+								</p>
+							</div>
+						</section>
+
+						<section id="four" class="wrapper style4">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">3. Bài toán phân đoạn ảnh (image segmentation)</h2>
+								<p>
+									Nếu như bài toán Phân loại ảnh - Image Classification trả lời cho câu hỏi "cái gì trong ảnh", 
+									bài toán Phát hiện đối tượng – Object Detection trả lời cho câu hỏi "cái gì trong ảnh và vị trí ở đâu" 
+									thì bài toán Phân đoạn ảnh – Image Segmentation sẽ giúp chúng ta trả lời chính xác "điểm ảnh nào thuộc 
+									về đối tượng nào". Nói cách khác, phân đoạn ảnh là quá trình gán nhãn cho từng điểm ảnh trong bức ảnh: 
+									các điểm ảnh có cùng tính chất sẽ được gán cùng một nhãn, như ví dụ tại 
+									<a href="#example_image_segmentation_2">Hình 5</a>.</p>
+	
+								<div>
+									<img src="\images\writings__CV_tasks\example_image_segmentation_2.png" id="example_image_segmentation_2" 
+									style="width:65.0%" alt="Minh họa bài toán phân đoạn ảnh." class="center" />
+									<div class="caption"><em>Hình 5. Minh họa bài toán phân đoạn ảnh. <br>
+										Mô hình sẽ cho ta biết trong ảnh đầu vào có một con mèo và gán nhãn tất cả những điểm ảnh nào 
+										thuộc về con mèo đó.</em></div>
+								</div>
+								<br>
+								
+								<p>
+									Về bản chất, bức ảnh sau khi được đưa vào mô hình phân đoạn sẽ trở thành một dạng biểu diễn khác gọi 
+									là biểu đồ phân đoạn <em>(segment map)</em> thể hiện các điểm ảnh nào thuộc về đối tượng mà mô hình đã phát hiện được.
+								</p>
+								<br>
+
+								<p>Bài toán phân đoạn ảnh được chia làm 2 loại (như <a href="#types_of_image_segmentation">Hình 6</a>):</p>
+								<ol>
+									<li><p>Phân đoạn ảnh ngữ nghĩa (Semantic Image Segmentation): các đối tượng thuộc cùng một lớp ngữ nghĩa sẽ 
+										được phân đoạn thành một lớp.</p></li>
+									<li><p>Phân đoạn ảnh theo từng đối tượng (Instance Segmentation): các đối tượng khác nhau thuộc cùng một 
+										lớp ngữ nghĩa sẽ được phân đoạn thành các lớp khác nhau.</p></li>
+								</ol>
+								<div>
+									<img src="\images\writings__CV_tasks\types_of_image_segmentation.png" id="types_of_image_segmentation" 
+									style="width:65.0%" alt="Minh họa bài toán phân đoạn ảnh." class="center" />
+									<div class="caption"><em>Hình 6. Minh họa phân biệt kết quả của 2 loại phân đoạn ảnh. 
+										Phân đoạn ảnh ngữ nghĩa (trái) chỉ ra tất cả con mèo đều là một lớp đối tượng; Phân đoạn 
+										ảnh theo từng đối tượng (phải) chỉ ra mỗi con mèo là một đối tượng riêng biệt và được gán nhãn khác nhau.</em></div>
+								</div> <br>
+
+								<p>
+									Kỹ thuật phân đoạn ảnh theo ngữ nghĩa là một kỹ thuật có thể ứng dụng cho nhiều bài toán khác nhau trong 
+									đời sống như lĩnh vực y tế , xe tự hành hay nhận dạng đối tượng. Các phương pháp giải quyết bài toán này 
+									thường được kiểm tra trên các tập dữ liệu chuẩn như <a href="https://paperswithcode.com/task/semantic-segmentation">CityScapes, PASCAL VOC hay 
+										ADE20K.</a>
+								</p>
+
+							</div>
+						</section>
+
+						<section id="five" class="wrapper alt style5">
+							<div class="inner">
+
+								<h2 class="major" style="color:lightblue">4. So sánh đặc điểm các bài toán trên</h2>
+								<p>
+									Tổng kết lại bài viết này, ta có <a href="#table:comparision_cv_problems">Bảng 1</a> giúp phân biệt các dạng bài 
+									toán phổ biến của lĩnh vực thị giác máy tính về các tiêu chí: mục tiêu, đầu vào và đầu ra của bài toán.
+								</p>		
+
+								<div id="table:comparision_cv_problems">
+									<table id="table:comparision_cv_problems"> 
+									<caption>Bảng 1: So sánh đặc điểm các loại bài toán cơ bản của lĩnh vực thị giác máy tính.</caption>
+									<thead>
+									<tr class="header">
+									<th style="text-align: left;"></th>
+									<th style="text-align: left;"><strong style="color:lightblue" class="center">Mục tiêu</strong></th>
+									<th style="text-align: left;"><strong style="color:lightblue" class="center">Đầu vào</strong></th>
+									<th style="text-align: left;"><strong style="color:lightblue" class="center">Đầu ra</strong></th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr class="odd">
+									<td style="text-align: left;"><strong style="color:lightblue">Phân loại ảnh</strong></td>
+									<td style="text-align: left;">Gán nhãn vật thể có trong ảnh</td>
+									<td style="text-align: left;">Ảnh chứa một đối tượng + Danh sách nhãn</td>
+									<td style="text-align: left;">Nhãn của đối tượng trong ảnh</td>
+									</tr>
+									<tr class="even">
+									<td style="text-align: left;"><strong style="color:lightblue">Phát hiện và định vị vật thể</strong></td>
+									<td style="text-align: left;">Gán nhãn vật thể có trong ảnh và vẽ một khuôn bao quanh vật thể đó</td>
+									<td style="text-align: left;">Ảnh chứa một hoặc nhiều đối tượng + Danh sách nhãn</td>
+									<td style="text-align: left;">Nhãn của tát cả đối tượng trong ảnh + Khuôn bao cho từng đối tượng</td>
+									</tr>
+									<tr class="odd">
+									<td style="text-align: left;"><strong style="color:lightblue">Phân đoạn ảnh</strong></td>
+									<td style="text-align: left;">Phân loại cho từng điểm ảnh trong bức ảnh (gán nhãn điểm ảnh)</td>
+									<td style="text-align: left;">Ảnh chứa một hoặc nhiều đối tượng + Danh sách nhãn</td>
+									<td style="text-align: left;">Nhãn của từng điểm ảnh trong bức ảnh</td>
+									</tr>
+									</tbody>
+									</table>
+									</div>
+								
+								<p><em>
+									<!-- Ngày: 05/08/2020 <br> -->
+									---<br>
+									Danh Nguyen Thanh </em>
+								</p>
+								
+							</div>
+						</section>
+                    </section>
+
+
+				<!-- Footer -->
+				<section id="footer">
+					<div class="inner">
+						<h2 class="major">Get in touch</h2>
+						<p>Let me know about you! I am pleased to be told about anything related to your experience on my website.</p>						
+						<!-- <form method="post" action="mailto:danhnt.webcontact@gmail.com" enctype="text/plain">
+							<div class="fields">
+								<div class="field">
+									<label for="name">Name</label>
+									<input type="text" name="name" id="name" />
+								</div>
+								<div class="field">
+									<label for="email">Email</label>
+									<input type="email" name="email" id="email" />
+								</div>
+								<div class="field">
+									<label for="message">Message</label>
+									<textarea name="message" id="message" rows="4"></textarea>
+								</div>
+							</div>
+							<ul class="actions">
+								<li><input type="submit" value="Send Message" /></li>
+							</ul>
+						</form> -->
+
+						<!--Disqus comment-->
+						<div id="disqus_thread"></div>
+						<script>
+							var disqus_config = function () {
+							this.page.url = document.location.href; // Replace PAGE_URL with your page's canonical URL variable
+							this.page.identifier = getPathName(); // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+						};
+						
+						(function() { // DON'T EDIT BELOW THIS LINE
+							var d = document, s = d.createElement('script');
+							s.src = 'https://danhnt.disqus.com/embed.js';
+							s.setAttribute('data-timestamp', +new Date());
+							(d.head || d.body).appendChild(s);
+						})();
+						</script>
+						<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+					
+						<ul class="contact">
+							<li class="icon solid fa-home">
+								University of Information Technology </br>
+								Ho Chi Minh City, Vietnam<br/>
+							</li>
+							<!-- <li class="icon solid fa-phone">(+84) xx-xxx-xxx</li> -->
+							<li class="icon solid fa-envelope"><a href="mailto:danhnt.webcontact@gmail.com">danhnt.webcontact@gmail.com</a></li>
+							<li>
+								Also find me on: </br>
+								<a href="https://github.com/danhntd" class="icon brands fa-github" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://facebook.com/daniel.danhnguyen" class="icon brands fa-facebook-f" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>		
+								<a href="https://instagram.com/_thnhdanh" class="icon brands fa-instagram" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="#" class="icon brands fa-twitter" style="font-size:30px" target="_blank">&nbsp&nbsp&nbsp</a>
+								<a href="https://www.linkedin.com/in/danhnt/" class="icon brands fa-linkedin" style="font-size:30px" target="_blank"></a>							
+							</li>
+						</ul>
+
+
+						<ul class="copyright">
+							<li>&copy; 2020 Danh Nguyen Thanh. All rights reserved.</li><li>Design: HTML5 UP</li><li>Images: Unsplash</li>
+						</ul>
+						
+					</div>
+				</section>
+			</div>
+
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
