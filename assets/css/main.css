@@ -116,7 +116,7 @@ input, select, textarea {
 /* Type */
 
 	body, input, select, textarea {
-		color: #646464;
+		color: #000000;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 14pt;
 		font-weight: 400;
@@ -2736,7 +2736,7 @@ input, select, textarea {
 	.post {
 		padding: 3em 3em 1em 3em ;
 		background: #ffffff;
-		border: solid 1px rgba(160, 160, 160, 0.3);
+		border: solid 1px rgba(100, 94, 94, 0.3);
 		margin: 0 0 3em 0;
 		position: relative;
 	}
