@@ -26,8 +26,8 @@
 								<li><a href="index.html">Home</a></li>
 								<li><a href="cv.html">Curriculum Vitae</a></li>
 								<li><a href="research.html">Research</a></li>
-								<li><a href="materials.html">Materials</a></li>
 								<li><a href="projects.html"><b>Projects</b></a></li>
+								<!-- <li><a href="materials.html">Materials</a></li> -->
 								<li><a href="contact.html">Contact</a></li>
 								
 
@@ -52,8 +52,8 @@
 									<li><a href="index.html">Home</a></li>
 									<li><a href="cv.html">Curriculum Vitae</a></li>
 									<li><a href="research.html">Research</a></li>
-									<li><a href="materials.html">Materials</a></li>
 									<li><a href="projects.html"><b>Projects</b></a></li>
+									<!-- <li><a href="materials.html">Materials</a></li> -->
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
 							</section>
@@ -63,57 +63,182 @@
 				<!-- Main -->
 					<div id="main">
 
-						
 						<!-- Post -->
-							<article class="post">
-								<header>
-									<div class="title">
-										<h2><a href="index.html">Projects</a></h2>
-										TO BE UPDATED!
-									</div>
-								</header>
-								
-								
-									<h2 style="color:rgb(0, 85, 255);">InstSynth</h2>
-										<b>Thanh-Danh Nguyen</b>, Bich-Nga Pham, Trong-Tai Dam Vu, Vinh-Tiep Nguyen†, Thanh Duc Ngo, and Tam V. Nguyen. 
-										“InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding.” 
-										2024 International Conference on Multimedia Analysis and Pattern Recognition (MAPR). IEEE, 2024. (Scopus) 
-										[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/document/">DOI</a>,
-										<a style="color:rgb(0, 85, 255);" href="pdf\">PDF</a>]<br><br>
+						<article class="post">
+							<!-- <header>
+								<div class="title">
+									<h2><a href="#">Project List</a></h2>
+								</div>
+							</header> -->
+							<ol>
+							<li><h2><a style="color:rgb(0, 85, 255);" href="#CAMO-FS">CAMO-FS</a></h2></li>
+							<li><h2><a style="color:rgb(0, 85, 255);" href="#InstSynth">InstSynth</a></h2></li>
+							<li><h2><a style="color:rgb(0, 85, 255);" href="#CE-OST">CE-OST</a></h2></li>
+							<li><h2><a style="color:rgb(0, 85, 255);" href="#LTSP">Label Transfer Scene Parser</a></h2></li>
+							</ol>
+						</article>
 
-									<h2 style="color:rgb(0, 85, 255);">CE-OST</h2>
-										<b>Thanh-Danh Nguyen</b>, Duc-Tuan Luu, Vinh-Tiep Nguyen†, and Thanh Duc Ngo, 
+						<!-- Post -->
+						<article class="post" id="CAMO-FS">
+							<header>
+								<div class="title">
+									<h2><a href="#">CAMO-FS</a></h2>
+									<p>Few-shot Learning for Animal Detection and Segmentation</p>
+								</div>
+								<div class="meta">
+									<time class="published">Jul 2024</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\camofs_project.jpg" alt=""  /></a>
+
+								<p align="justify">Camouflaged object detection and segmentation is a new and challenging research topic in computer vision. 
+									There is a serious issue of lacking data on concealed objects such as camouflaged animals in natural scenes. In this paper, 
+									we address the problem of few-shot learning for camouflaged object detection and segmentation. To this end, we first collect 
+									a new dataset, CAMO-FS, for the benchmark. As camouflaged instances are challenging to recognize due to their similarity compared 
+									to the surroundings, we guide our models to obtain camouflaged features that highly distinguish the instances from the background. 
+									In this work, we propose FS-CDIS, a framework to efficiently detect and segment camouflaged instances via two loss functions 
+									contributing to the training process. Firstly, the instance triplet loss with the characteristic of differentiating the anchor, 
+									which is the mean of all camouflaged foreground points, and the background points are employed to work at the instance level. 
+									Secondly, to consolidate the generalization at the class level, we present instance memory storage with the scope of storing 
+									camouflaged features of the same category, allowing the model to capture further class-level information during the learning 
+									process. The extensive experiments demonstrated that our proposed method achieves state-of-the-art performance on the newly 
+									collected dataset.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/FS-CDIS" class="button medium">Code</a>
+									<a style="color:rgb(0, 85, 255);" href="https://www.kaggle.com/datasets/danhnt/camo-fs-dataset" class="button medium">Dataset</a>
+								</p>
+									
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>*, Anh-Khoa Nguyen Vu*, Nhat-Duy Nguyen*, Vinh-Tiep Nguyen, Thanh Duc Ngo, Thanh-Toan Do, 
+										Minh-Triet Tran, and Tam V. Nguyen†, “The Art of Camouflage: Few-shot Learning for Animal Detection and Segmentation”,
+                                        IEEE Access, Jul 2024. IF = 3.4 (SCIE) 
+										[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/document/10608133">DOI</a>,
+										<a style="color:rgb(0, 85, 255);" href="https://arxiv.org/abs/2304.07444">ArXiv</a>,
+										<a style="color:rgb(0, 85, 255);" href="">BibTeX</a>]
+								</blockquote>
+						</article>
+
+						<!-- Post -->
+						<article class="post" id="InstSynth">
+							<header>
+								<div class="title">
+									<h2><a href="#">InstSynth</a></h2>
+									<p>Conditional Data Synthesis for Scene Understanding</p>
+								</div>
+								<div class="meta">
+									<time class="published">Jul 2024</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\instsynth_project.jpg" alt=""  /></a>
+
+								<p align="justify">Scene understanding at the instance level is an essential task in computer vision to support modern 
+								Advanced Driver Assistance Systems. Solutions have been proposed with abundant annotated training data. However, the annotation at 
+								the instance level is high-cost due to huge manual efforts. In this work, we solve this problem by introducing 
+								InstSynth, an advanced framework leveraging instance-wise annotations as conditions to enrich the training data. 
+								Existing methods focused on semantic segmentation via using prompts to synthesize image-annotation pairs, facing 
+								an unrealistic manner. Our proposals utilize the strength of such large generative models to synthesize instance 
+								data with prompt-guided and maskbased mechanisms to boost the performance of the instancelevel scene understanding 
+								models. We empirically improve the performance of the latest instance segmentation architectures of FastInst and 
+								OneFormer by 14.49% and 11.59% AP, respectively, evaluated on the Cityscapes benchmark. Accordingly, we construct 
+								an instance-level synthesized dataset, dubbed IS-Cityscapes, with over a 4× larger number of instances in comparison 
+								with the vanilla Cityscapes.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/InstSynth" class="button medium">Code</a>
+								</p>
+							
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>, Bich-Nga Pham, Trong-Tai Dam Vu, Vinh-Tiep Nguyen†, Thanh Duc Ngo, and Tam V. Nguyen. 
+									“InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding.” 
+									2024 International Conference on Multimedia Analysis and Pattern Recognition (MAPR). IEEE, 2024. (Scopus) 
+									[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/">DOI</a>,
+									<a style="color:rgb(0, 85, 255);" href="">BibTeX</a>]
+								</blockquote>
+						</article>
+
+						<!-- Post -->
+						<article class="post" id="CE-OST">
+							<header>
+								<div class="title">
+									<h2><a href="#">CE-OST</a></h2>
+									<p>Contour Emphasis for Camouflage Instance Segmentation</p>
+								</div>
+								<div class="meta">
+									<time class="published">Oct 2023</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\ceost_project.jpg" alt=""  /></a>
+
+								<p align="justify">Understanding camouflage images at instance level is such a challenging task in computer vision. 
+								Since the camouflage instances have their colors and textures similar to the background, the key to distinguish 
+								them in the images should rely on their contours. The contours seperate the instance from the background, thus 
+								recognizing these contours should break their camouflage mechanism. To this end, we address the problem of camouflage 
+								instance segmentation via the Contour Emphasis approach. We improve the ability of the segmentation models by 
+								enhancing the contours of the camouflaged instances. We propose the CE-OST framework which employs the well-known 
+								architecture of Transformer-based models in a one-stage manner to boost the performance of camouflaged instance 
+								segmentation. The extensive experiments prove our contributions over the state-of-the-art baselines on different 
+								benchmarks, i.e. CAMO++, COD10K and NC4K.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CE-OST" class="button medium">Code</a>
+								</p>
+
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>, Duc-Tuan Luu, Vinh-Tiep Nguyen†, and Thanh Duc Ngo, 
 										“CE-OST: Contour Emphasis for One-Stage Transformer-based Camouflage Instance Segmentation.” 
 										2023 International Conference on Multimedia Analysis and Pattern Recognition (MAPR). IEEE, 2023. (Scopus) 
-										[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/document/10288682">DOI</a>, 
-										<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2023_CE-OST.pdf">PDF</a>]<br><br>
+										[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/document/10288682">DOI</a>,
+										<a style="color:rgb(0, 85, 255);" href="https://scholar.googleusercontent.com/scholar.bib?q=info:Agvp94TH9u0J:scholar.google.com/&output=citation&scisdr=ClGrJGIMENft5BW9n5k:AFWwaeYAAAAAZqC7h5j0ROgAYdqljhoAXrBhW3g&scisig=AFWwaeYAAAAAZqC7h6B_9lCpKO_sC-6DJEdSKHI&scisf=4&ct=citation&cd=-1&hl=vi">BibTeX</a>]
+								</blockquote>
+						</article>
 
-									<h2 style="color:rgb(0, 85, 255);">CAMO-FS</h2>
-                                        <b>Thanh-Danh Nguyen</b>*, Anh-Khoa Nguyen Vu*, Nhat-Duy Nguyen*, Vinh-Tiep Nguyen, Thanh Duc Ngo, Thanh-Toan Do, 
-										Minh-Triet Tran, and Tam V. Nguyen†, “The Art of Camouflage: Few-shot Learning for Animal Detection and Segmentation”,
+						<!-- Post -->
+						<article class="post" id="LTSP">
+							<header>
+								<div class="title">
+									<h2><a href="#">Label Transfer Scene Parser</a></h2>
+									<p>Nighttime Scene Understanding</p>
+								</div>
+								<div class="meta">
+									<time class="published">Under review</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\ltsp_project.jpg" alt=""  /></a>
+
+								<p align="justify">Semantic segmentation plays a crucial role in traffic scene understanding, especially in nighttime condition. 
+								This paper tackles the task of semantic segmentation on nighttime scenes. The largest challenge of this task is the lack of 
+								annotated nighttime images to train a deep learning-based scene parser. The existing annotated datasets are abundant in daytime 
+								condition but scarce in nighttime due to the high cost. Thus, we propose a novel Label Transfer Scene Parser (LTSP) framework 
+								for nighttime scene semantic segmentation by leveraging daytime annotation transfer. Our framework performs segmentation in 
+								the dark without training on real nighttime annotated data. In particular, we propose translating daytime images to 
+								nighttime condition to obtain more data with annotation in an efficient way. In addition, we utilize the pseudo-labels 
+								inferred from unlabeled nighttime scenes to further train the scene parser. The novelty of our work is the ability to 
+								perform nighttime segmentation via daytime annotated label and nighttime synthetic versions of the same set of images. 
+								The extensive experiments demonstrate the improvement and efficiency of our scene parser over the state-of-the-art methods 
+								with the similar semi-supervised approach on the benchmark of Nighttime Driving Test dataset. Notably, our proposed method 
+								utilizes only one tenth of the amount of labeled and unlabeled data in comparison with the previous methods.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/Label_Transfer_Scene_Parser" class="button medium">Code</a>
+								</p>
+
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>, Nguyen Phan, Tam V. Nguyen†, Vinh-Tiep Nguyen, and Minh-Triet Tran, 
+										“Nighttime Scene Understanding with Label Transfer Scene Parser”,
                                         Under Review.
 										[<a style="color:rgb(0, 85, 255);" href="#">DOI</a>,
-										<a style="color:rgb(0, 85, 255);" href="https://arxiv.org/abs/2304.07444">Preprint</a>]<br><br>
+										<a style="color:rgb(0, 85, 255);" href="">BibTeX</a>]
+								</blockquote>
+						</article>
 
-									<h2 style="color:rgb(0, 85, 255);">Label Transfer Scene Parser</h2>
-										<b>Thanh-Danh Nguyen</b>, Nguyen Phan, Tam V. Nguyen†, Vinh-Tiep Nguyen, and Minh-Triet Tran, 
-										“Nighttime Scene Understanding with Label Transfer Scene Parser”,
-										Under Review at Image and Vision Computing Journal (IVC).
-										[<a style="color:rgb(0, 85, 255);" href="#">DOI</a>,
-										<a style="color:rgb(0, 85, 255);" href="pdf\IVC__Label_Transfer.pdf">PDF</a>]<br><br>
-
-
-
-
-
-							</article>
 
 						<!-- Footer -->
 						<section id="footer">
 							<ul class="icons">
 
 							</ul>
-							<p class="copyright">&copy; <a href="https://github.com/danhntd/danhntd.github.io/tree/main/pdf"> T-Danh Nguyen</a>. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
+							<p class="copyright">&copy; T-Danh Nguyen</a>. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
 						</section>
 					</div>
 
@@ -125,13 +250,13 @@
 							<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
 							<header>
 								<h2>Projects</h2>
-								<p>Published Projects</a></p>
 							</header>
 						</section>
 
 
 						<section style="color:rgb(141, 141, 141);" class="blurb">
 							<h2>News</h2>
+							<li>A journal about Few-shot Learning for Camouflage Detection and Instance Segmentation is accepted to <a href="https://ieeeaccess.ieee.org/">IEEE Access</a> (SCIE-Q1), Jul 2024. &#9889;</li>
 							<li>A paper about Conditional Data Synthesis for Scene Understanding is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Jul 2024. &#9889;</li>
 							<li>A paper about Camouflage Instance Segmentation is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Jun 2023.</li>
 							<li>Danh Nguyen has started his internship at NII, Tokyo, Japan in the end of Mar 2023.</li>
