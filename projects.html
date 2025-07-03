@@ -64,24 +64,157 @@
 					<div id="main">
 
 						<!-- Post -->
-						<article class="post">
-							<!-- <header>
+						<article class="post" id="CAMO-GenOS">
+							<header>
 								<div class="title">
-									<h2><a href="#">Project List</a></h2>
+									<h2><a href="#">CAMO-GenOS</a></h2>
+									<p>Generative One-Shot Camouflage Instance Segmentation</p>
 								</div>
-							</header> -->
-							<div>
-							Please visit <b><a href="https://github.com/danhntd">GitHub</a></b> for technical details.<br><br>
-							</div>
-							<ol>
-								<li><h2><a href="#CAMO-FS">CAMO-FS</a></h2></li>
-								<li><h2><a href="#InstSynth">InstSynth</a></h2></li>
-								<li><h2><a href="#CAMUL">CAMUL</a></h2></li>
-								<li><h2><a href="#LTSP">Label Transfer Scene Parser</a></h2></li>
-								<li><h2><a href="#CE-OST">CE-OST</a></h2></li>
-							</ol>
+								<div class="meta">
+									<time class="published">Jul 2025</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\camo_genos_project.jpg" alt=""  /></a>
+
+								<p align="justify">Identifying camouflaged instances is a critical yet underexplored problem in computer 
+									vision, where traditional segmentation models often fail due to extreme visual similarity between 
+									foreground and background. While recent advances have shown promise with deep learning models, they 
+									heavily depend on large annotated datasets, which are costly and impractical to collect in camouflage 
+									scenarios. In this work, we tackle this limitation by introducing a novel framework, dubbed CAMO GenOS, 
+									that leverages one-shot annotated samples to drive a generative process for data enrichment. Our 
+									approach integrates prompt-guided and mask-conditioned generative mechanisms to synthesize diverse, 
+									high-fidelity camouflaged instances, thereby enhancing the learning capacity of segmentation models 
+									under minimal supervision. We demonstrate the effectiveness of our CAMO-GenOS by setting up a novel 
+									state-of-the-art baseline for one-shot camouflage instance segmentation research on the challenging 
+									CAMO-FS benchmark.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CAMO-GenOS" class="button medium">Code</a>
+								</p>
+
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>,  Vinh-Tiep Nguyen†, and Tam V. Nguyen 
+										“Generative One-shot Camouflage Instance Segmentation.” 
+										2025 International Conference on Multimedia Analysis and Pattern Recognition (MAPR). IEEE, 2025. (Scopus) 
+										[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/">DOI</a>]
+								</blockquote>
 						</article>
 
+						<!-- Post -->
+						<article class="post" id="FS-CAMOFreq">
+							<header>
+								<div class="title">
+									<h2><a href="#">FS-CAMOFreq</a></h2>
+									<p>Few-Shot Instance Segmentation: An Exploration in the Frequency Domain for Camouflage Instances</p>
+								</div>
+								<div class="meta">
+									<time class="published">Jul 2025</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\fs_camofreq_project.jpg" alt=""  /></a>
+
+								<p align="justify">Few-shot instance segmentation is an intense yet essential task, particularly in camouflaged 
+									scenarios where visual ambiguity between foreground and background makes instance level recognition more 
+									difficult. Prior approaches primarily focused on image augmentations in the color space domain to provide 
+									diverse perspective information to the segmentation models. However, this type of augmentation often fails 
+									to capture the full range of visual characteristics needed for robust generalization, particularly in 
+									camouflage images, due to the limited similar representation in the color space domain. To this end, we 
+									tackle this gap by exploiting a novel approach to augment and enhance image features in the derivative 
+									frequency domain. Accordingly, we propose a novel framework tailored for few-shot camouflage instance 
+									segmentation via the instance-aware frequency-based augmentation, dubbed FS-CAMOFreq, to enhance image 
+									diversity while preserving semantic structure, thereby improving the ability of the few-shot segmentor 
+									to learn from limited data. Extensive experiments on the challenging CAMO-FS benchmark demonstrate that 
+									our approach achieves superior performance compared to state-of-the-art baselines.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/FS-CAMOFreq" class="button medium">Code</a>
+								</p>
+
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>, Hung-Phu Cao, Thanh Duc Ngo, Vinh-Tiep Nguyen†, and Tam V. Nguyen, 
+										“Few-Shot Instance Segmentation: An Exploration in the Frequency Domain for Camouflage Instances.” 
+										2025 International Conference on Multimedia Analysis and Pattern Recognition (MAPR). IEEE, 2025. (Scopus) 
+										[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/">DOI</a>]
+								</blockquote>
+						</article>
+
+						<!-- Post -->
+						<article class="post" id="CAMUL">
+							<header>
+								<div class="title">
+									<h2><a href="#">CAMUL</a></h2>
+									<p>Context-Aware Multi-conditional Instance Synthesis for Image Segmentation</p>
+								</div>
+								<div class="meta">
+									<time class="published">Jun 2025</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\camul_project.jpg" alt=""  /></a>
+
+								<p align="justify">Instance image segmentation task requires training with abundant annotated data to achieve 
+									high accuracy. Recently, conditional image synthesis has demonstrated its effectiveness in generating 
+									synthetic data for this task. However, existing image synthesis models face challenges in generating target 
+									instances to match the masks with complex shapes. Moreover, others fail to create diverse instances due to 
+									utilizing low-context simple text prompts. To address these issues, we propose CAMUL, a framework for 
+									context-aware multi-conditional instance synthesis. CAMUL introduces two key innovations: CARP 
+									(cross-attention refinement prompting) to enhance the alignment of generated instances with conditional 
+									masks, and iCAFF (incremental context-aware feature fusion) to determine the general embeddings of the 
+									instances for a more precise context understanding. Our method significantly improves segmentation 
+									performance, increasing up to 15.34% AP on Cityscapes and 3.34% AP on the large-scale ADE20K benchmark 
+									compared to the baselines.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CAMUL" class="button medium">Code</a>
+								</p>
+							
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>, Trong-Tai Dam Vu, Bich-Nga Pham, Thanh Duc Ngo, Tam V. Nguyen, and Vinh-Tiep Nguyen†,
+									“CAMUL: Context-Aware Multi-conditional Instance Synthesis for Image Segmentation”, 
+									IEEE MultiMedia, Jun 2025. IF = 2.3 (SCIE) 
+									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/MMUL.2025.3578972">DOI</a>]
+								</blockquote>
+						</article>
+
+						<!-- Post -->
+						<article class="post" id="LTSP">
+							<header>
+								<div class="title">
+									<h2><a href="#">LTSP</a></h2>
+									<p>Nighttime Scene Understanding with Label Transfer Scene Parser</p>
+								</div>
+								<div class="meta">
+									<time class="published">Sep 2024</time>
+								</div>
+							</header>
+								<a href="#" class="image featured"><img src="images\ltsp_project.jpg" alt=""  /></a>
+
+								<p align="justify">Semantic segmentation plays a crucial role in traffic scene understanding, especially in nighttime condition. 
+								This paper tackles the task of semantic segmentation on nighttime scenes. The largest challenge of this task is the lack of 
+								annotated nighttime images to train a deep learning-based scene parser. The existing annotated datasets are abundant in daytime 
+								condition but scarce in nighttime due to the high cost. Thus, we propose a novel Label Transfer Scene Parser (LTSP) framework 
+								for nighttime scene semantic segmentation by leveraging daytime annotation transfer. Our framework performs segmentation in 
+								the dark without training on real nighttime annotated data. In particular, we propose translating daytime images to 
+								nighttime condition to obtain more data with annotation in an efficient way. In addition, we utilize the pseudo-labels 
+								inferred from unlabeled nighttime scenes to further train the scene parser. The novelty of our work is the ability to 
+								perform nighttime segmentation via daytime annotated label and nighttime synthetic versions of the same set of images. 
+								The extensive experiments demonstrate the improvement and efficiency of our scene parser over the state-of-the-art methods 
+								with the similar semi-supervised approach on the benchmark of Nighttime Driving Test dataset. Notably, our proposed method 
+								utilizes only one tenth of the amount of labeled and unlabeled data in comparison with the previous methods.</p>
+								<p align="centering">
+									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/Label_Transfer_Scene_Parser" class="button medium">Code</a>
+								</p>
+
+								<b>Reference</b>:
+								<blockquote>
+									<b>Thanh-Danh Nguyen</b>, Nguyen Phan, Tam V. Nguyen†, Vinh-Tiep Nguyen, and Minh-Triet Tran, 
+										“Nighttime Scene Understanding with Label Transfer Scene Parser”,
+                                        Image and Vision Computing, Sep 2024.
+										[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1016/j.imavis.2024.105257">DOI</a>]
+								</blockquote>
+						</article>
+
+						
+						
 						<!-- Post -->
 						<article class="post" id="CAMO-FS">
 							<header>
@@ -121,7 +254,7 @@
 										<a style="color:rgb(0, 85, 255);" href="https://arxiv.org/abs/2304.07444">ArXiv</a>]
 								</blockquote>
 						</article>
-
+						
 						<!-- Post -->
 						<article class="post" id="InstSynth">
 							<header>
@@ -158,82 +291,7 @@
 									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/MAPR63514.2024.10660775">DOI</a>]
 								</blockquote>
 						</article>
-
-						<!-- Post -->
-						<article class="post" id="CAMUL">
-							<header>
-								<div class="title">
-									<h2><a href="#">CAMUL</a></h2>
-									<p>Context-Aware Multi-conditional Instance Synthesis for Image Segmentation</p>
-								</div>
-								<div class="meta">
-									<time class="published">Jan 2025</time>
-								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\camul_project.jpg" alt=""  /></a>
-
-								<p align="justify">Instance image segmentation task requires training with abundant annotated data to 
-									achieve high accuracy. Recently, conditional image synthesis has demonstrated its effectiveness in 
-									generating synthetic data for this task. However, existing image synthesis models face challenges in 
-									generating target instances to match the masks with complex shapes. Moreover, others fail to create 
-									diverse instances due to utilizing low-context simple text prompts. To address these issues, we 
-									propose CAMUL, a framework for context-aware multi-conditional instance synthesis. CAMUL introduces 
-									two key innovations: CARE (cross- attention refinement prompting) to enhance the alignment of 
-									generated instances with conditional masks, and iCAFF (incremental context-aware feature fusion) 
-									to determine the general embeddings of the instances for a more precise context understanding. 
-									Our method significantly improves segmentation performance, increasing up to 15.34% AP on Cityscapes 
-									and 3.34% AP on the large-scale ADE20K benchmark compared to the baselines.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CAMUL" class="button medium">Code</a>
-								</p>
-							
-								<b>Reference</b>:
-								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Trong-Tai Dam Vu, Bich-Nga Pham, Thanh Duc Ngo, Tam V. Nguyen, and Vinh-Tiep Nguyen†,
-									“CAMUL: Context-Aware Multi-conditional Instance Synthesis for Image Segmentation”, 
-									IEEE MultiMedia, Jun 2025. IF = 2.3 (SCIE) 
-									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/MMUL.2025.3578972">DOI</a>]
-								</blockquote>
-						</article>
-
-						<!-- Post -->
-						<article class="post" id="LTSP">
-							<header>
-								<div class="title">
-									<h2><a href="#">Label Transfer Scene Parser</a></h2>
-									<p>Nighttime Scene Understanding</p>
-								</div>
-								<div class="meta">
-									<time class="published">Sep 2024</time>
-								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\ltsp_project.jpg" alt=""  /></a>
-
-								<p align="justify">Semantic segmentation plays a crucial role in traffic scene understanding, especially in nighttime condition. 
-								This paper tackles the task of semantic segmentation on nighttime scenes. The largest challenge of this task is the lack of 
-								annotated nighttime images to train a deep learning-based scene parser. The existing annotated datasets are abundant in daytime 
-								condition but scarce in nighttime due to the high cost. Thus, we propose a novel Label Transfer Scene Parser (LTSP) framework 
-								for nighttime scene semantic segmentation by leveraging daytime annotation transfer. Our framework performs segmentation in 
-								the dark without training on real nighttime annotated data. In particular, we propose translating daytime images to 
-								nighttime condition to obtain more data with annotation in an efficient way. In addition, we utilize the pseudo-labels 
-								inferred from unlabeled nighttime scenes to further train the scene parser. The novelty of our work is the ability to 
-								perform nighttime segmentation via daytime annotated label and nighttime synthetic versions of the same set of images. 
-								The extensive experiments demonstrate the improvement and efficiency of our scene parser over the state-of-the-art methods 
-								with the similar semi-supervised approach on the benchmark of Nighttime Driving Test dataset. Notably, our proposed method 
-								utilizes only one tenth of the amount of labeled and unlabeled data in comparison with the previous methods.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/Label_Transfer_Scene_Parser" class="button medium">Code</a>
-								</p>
-
-								<b>Reference</b>:
-								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Nguyen Phan, Tam V. Nguyen†, Vinh-Tiep Nguyen, and Minh-Triet Tran, 
-										“Nighttime Scene Understanding with Label Transfer Scene Parser”,
-                                        Image and Vision Computing, Sep 2024.
-										[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1016/j.imavis.2024.105257">DOI</a>]
-								</blockquote>
-						</article>
-
+						
 						<!-- Post -->
 						<article class="post" id="CE-OST">
 							<header>
@@ -268,8 +326,7 @@
 										[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/document/10288682">DOI</a>]
 								</blockquote>
 						</article>
-
-
+						
 						<!-- Footer -->
 						<section id="footer">
 							<ul class="icons">
@@ -290,23 +347,46 @@
 							</header>
 						</section>
 
+						<!-- Intro -->
+						<section id="intro">
+							<h3>Contents</h3>
+							<div class="mini-posts">
+									
+							</div>
+							<article class="blurb">
+								<header>
+									<h4><a href="#CAMO-GenOS">CAMO-GenOS</a></h2>
+									<h4><a href="#FS-CAMOFreq">FS-CAMOFreq</a></h2>
+									<h4><a href="#CAMUL">CAMUL</a></h2>
+									<h4><a href="#LTSP">LTSP</a></h2>
+									<h4><a href="#CAMO-FS">CAMO-FS</a></h2>
+									<h4><a href="#InstSynth">InstSynth</a></h2>
+									<h4><a href="#CE-OST">CE-OST</a></h2>
+
+								</header>
+							Please visit my <b><a href="https://github.com/danhntd">GitHub</a></b> for more technical details.
+
+							</article>
+						</section>
+						
 
 						<section style="color:rgb(141, 141, 141);" class="blurb">
 							<h2>News</h2>
+							<li>Two papers about low-shot learning are accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Jul 2025.</li>
 							<li>A journal is accepted to <a href="https://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=93">IEEE MultiMedia</a> (SCIE-Q1), Jun 2025.</li>
-							<li>A student abstract on Image Segmentation with Limited Training Data is accepted to <a href="https://aaai.org/conference/aaai/aaai-25/">AAAI</a>, 2025.</li>
+							<li>A student abstract on image segmentation with limited training data is accepted to <a href="https://aaai.org/conference/aaai/aaai-25/">AAAI</a>, 2025.</li>
 							<li>Danh Nguyen was funded by the Master, PhD Scholarship Programme of <a href="https://vinif.org/">Vingroup Innovation Foundation (VinIF)</a>, code VINIF.2024.TS.068.</li>
-							<li>A journal about Nighttime Scene Understanding is accepted to <a href="https://www.sciencedirect.com/journal/image-and-vision-computing">IMAVIS</a> (SCIE-Q1), Sep 2024.</li>
-							<li>A journal about Few-shot Learning for Camouflage Detection and Instance Segmentation is accepted to <a href="https://ieeeaccess.ieee.org/">IEEE Access</a> (SCIE-Q1), Jul 2024.</li>
-							<li>A paper about Conditional Data Synthesis for Scene Understanding is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Jul 2024.</li>
-							<li>A paper about Camouflage Instance Segmentation is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Jun 2023.</li>
-							<li>Danh Nguyen has started his internship at NII, Tokyo, Japan, Apr 2023.</li>
-							<li>A journal about Cartoon Face Synthesis is accepted to <a href="https://link.springer.com/journal/11042">MTA</a> (SCIE-Q1), Mar 2023.</li>
+							<li>A journal about nighttime scene understanding is accepted to <a href="https://www.sciencedirect.com/journal/image-and-vision-computing">IMAVIS</a> (SCIE-Q1), Sep 2024.</li>
+							<li>A journal about few-shot learning for camouflage detection and instance segmentation is accepted to <a href="https://ieeeaccess.ieee.org/">IEEE Access</a> (SCIE-Q1), Jul 2024.</li>
+							<li>A paper about conditional data synthesis for scene understanding is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Jul 2024.</li>
+							<li>A paper about camouflage instance segmentation is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Jun 2023.</li>
+							<li>Danh Nguyen has started his internship at NII, Tokyo, Japan, started in Apr 2023.</li>
+							<li>A journal about cartoon face synthesis is accepted to <a href="https://link.springer.com/journal/11042">MTA</a> (SCIE-Q1), Mar 2023.</li>
 							<li>Danh Nguyen was funded by the Master, PhD Scholarship Programme of <a href="https://vinif.org/">Vingroup Innovation Foundation (VinIF)</a>, code VINIF.2022.ThS.104.</li>
-							<li>A paper about Image Stylization is accepted to <a href="http://rtdconference.info/conference/RTD-2022">RTD</a>, Nov 2022.</li>
-							<li>A paper about Image Restoration is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Oct 2022.</li>
-							<li>A poster about Camouflaged Animals Detection and Segmentation is accepted to <a href="https://www.cv4animals.com/home">CV4Animals Workshop</a>, CVPR, Apr 2022.</li>
-							<li>A journal about Vehicle Motion Counting is accepted to <a href="https://link.springer.com/journal/11760">SIViP</a> (SCIE-Q2), Apr 2022.</li>
+							<li>A paper about image stylization is accepted to <a href="http://rtdconference.info/conference/RTD-2022">RTD</a>, Nov 2022.</li>
+							<li>A paper about image restoration is accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Oct 2022.</li>
+							<li>A poster about camouflaged animals detection and segmentation is accepted to <a href="https://www.cv4animals.com/home">CV4Animals Workshop</a>, CVPR, Apr 2022.</li>
+							<li>A journal about vehicle motion counting is accepted to <a href="https://link.springer.com/journal/11760">SIViP</a> (SCIE-Q2), Apr 2022.</li>
 							<li>Two papers are accepted to <a href="https://mapr.uit.edu.vn/">MAPR</a>, Oct 2021.</li>
 							
 						</section>
