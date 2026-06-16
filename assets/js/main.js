@@ -91,5 +91,47 @@
 			breakpoints.on('>large', function() {
 				$intro.prependTo($sidebar);
 			});
+			
+$(function() {
+		var $tocLinks = $('#project-toc header a');
+		if ($tocLinks.length && 'IntersectionObserver' in window) {
+			
+			var options = {
+				root: null,
+				rootMargin: '-30% 0px -50% 0px', 
+				threshold: 0
+			};
 
+			var activeId = "";
+
+			var observer = new IntersectionObserver(function(entries) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						var id = entry.target.getAttribute('id');
+						if (id !== activeId) {
+							activeId = id;
+							
+							// Đồng bộ mượt mà với luồng làm tươi (render) của GPU
+							window.requestAnimationFrame(function() {
+								$tocLinks.removeClass('active');
+								$('#project-toc header a[href="#' + id + '"]').addClass('active');
+							});
+						}
+					}
+				});
+			}, options);
+
+			// Theo dõi vị trí của từng bài viết dự án tương ứng trên trang
+			$tocLinks.each(function() {
+				var targetId = $(this).attr('href');
+				if (targetId && targetId.indexOf('#') === 0) {
+					var $targetSection = $(targetId);
+					if ($targetSection.length) {
+						observer.observe($targetSection[0]);
+					}
+				}
+			});
+		}
+	});
+	
 })(jQuery);
