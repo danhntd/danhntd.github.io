@@ -7,6 +7,27 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+html {
+    background-color: #f4f4f4c4; /* Giữ màu nền gốc của bạn */
+}
+
+body {
+    /* Trạng thái mặc định khi trang vừa tải xong: hiện hình mượt mà trong 0.4 giây */
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+}
+
+/* Class bổ trợ: Trình duyệt sẽ tự động kích hoạt class này để làm mờ trang ngay khi bạn click chuyển tab */
+body.page-fade-out {
+    opacity: 0 !important;
+}
+
+html {
+    scroll-behavior: smooth; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -3772,6 +3793,7 @@ ul.contact {
 			margin: 0;
 			text-align: left;
 			z-index: 99;
+			will-change: transform, top;
 		}
 
 		.projects-page #project-toc header a {
