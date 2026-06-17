@@ -92,13 +92,47 @@
 				$intro.prependTo($sidebar);
 			});
 			
-$(function() {
+// ==========================================================================
+	// 1. XỬ LÝ HIỆU ỨNG CHUYỂN TRANG MƯỢT MÀ (TỐI ƯU TƯƠNG THÍCH GITHUB PAGES)
+	// ==========================================================================
+	$(function() {
+		// Bắt tất cả các liên kết chuyển đổi giữa các file HTML độc lập trên menu
+		$('#header .links a, #menu .links a, #header h1 a').on('click', function(event) {
+			var href = $(this).attr('href');
+			
+			// Kiểm tra điều kiện an toàn: Link tồn tại, không phải anchor nhảy mục (#) và không mở tab mới
+			if (href && href.indexOf('#') === -1 && href !== 'javascript:void(0);' && $(this).attr('target') !== '_blank') {
+				
+				// Lấy thông tin tên miền để xác định link nội bộ
+				var currentTarget = this.hostname;
+				
+				// Chỉ chạy hiệu ứng nếu nhảy tab trong cùng một trang web hiện tại (Internal Link)
+				if (currentTarget === window.location.hostname) {
+					event.preventDefault();
+					
+					// Gỡ bỏ class hiện hình và kích hoạt class mờ dần (Fade-out) của #wrapper
+					$('body').removeClass('page-fade-in');
+					$('body').addClass('page-fade-out');
+					
+					// Đợi 400ms cho phần nội dung cũ mờ hẳn rồi mới chính thức chuyển trang mới
+					setTimeout(function() {
+						window.location.href = href;
+					}, 400);
+				}
+			}
+		});
+	});
+
+	// ==========================================================================
+	// 2. XỬ LÝ SCROLLSPY TỰ ĐỘNG TÔ ĐẬM MỤC LỤC TRANG PROJECTS (MƯỢT MÀ BẰNG GPU)
+	// ==========================================================================
+	$(function() {
 		var $tocLinks = $('#project-toc header a');
 		if ($tocLinks.length && 'IntersectionObserver' in window) {
 			
 			var options = {
 				root: null,
-				rootMargin: '-30% 0px -50% 0px', 
+				rootMargin: '-30% 0px -50% 0px', /* Vùng thấu kính nhận diện tối ưu giữa màn hình */
 				threshold: 0
 			};
 
@@ -111,7 +145,7 @@ $(function() {
 						if (id !== activeId) {
 							activeId = id;
 							
-							// Đồng bộ mượt mà với luồng làm tươi (render) của GPU
+							// Tối ưu hóa: Đưa tác vụ thay đổi giao diện vào luồng đồ họa phần cứng requestAnimationFrame
 							window.requestAnimationFrame(function() {
 								$tocLinks.removeClass('active');
 								$('#project-toc header a[href="#' + id + '"]').addClass('active');
