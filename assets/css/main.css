@@ -140,7 +140,7 @@ input, select, textarea {
 		color: #000000;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-		font-size: 14pt;
+		font-size: 12pt;
 		font-weight: 400;
 		line-height: 1.75;
 	}
@@ -148,7 +148,7 @@ input, select, textarea {
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 11pt;
 			}
 
 		}
@@ -156,7 +156,7 @@ input, select, textarea {
 		@media screen and (max-width: 1280px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 11pt;
 			}
 
 		}
@@ -164,7 +164,7 @@ input, select, textarea {
 		@media screen and (max-width: 980px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 11pt;
 			}
 
 		}
@@ -172,7 +172,7 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 11pt;
 			}
 
 		}
@@ -180,7 +180,7 @@ input, select, textarea {
 		@media screen and (max-width: 480px) {
 
 			body, input, select, textarea {
-				font-size: 12pt;
+				font-size: 11pt;
 			}
 
 		}
@@ -2350,7 +2350,7 @@ input, select, textarea {
 		.image.featured {
 			display: block;
 			margin: 0 0 3em 0;
-			width: 100%;
+			width: 89%;
 			border-radius: 20px; /* Độ bo góc giống hoặc lớn hơn textbox một chút */
     		object-fit: cover;   /* Giúp ảnh tự động cân đối, không bị méo hình */
 		}
@@ -3196,68 +3196,75 @@ input, select, textarea {
 			height: inherit;
 			line-height: inherit;
 			margin-left: 1.5em;
-			overflow: hidden;
 			padding-left: 1.5em;
+			padding-right: 1.5em;
+			position: relative; /* Làm khung định vị cho mục lệch phải */
 		}
 
-			#header .links ul li {
-				/* border-left: solid 1px rgba(160, 160, 160, 0.3); */
-				line-height: 1;
-				margin-left: 1em;
-				padding-left: 1em;
+			/* Kích hoạt Flexbox và CĂN GIỮA cụm menu chính, các chữ không bị giãn rộng */
+			#header .links ul {
+				display: flex;
+				align-items: center;
+				justify-content: center; /* Gom cụm menu chính vào chính giữa */
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
 			}
 
-				#header .links ul li:first-child {
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-				}
+			#header .links ul li {
+				line-height: 1;
+				margin-left: 1.25em;  /* Khoảng cách vừa vặn giữa các chữ */
+				padding-left: 1.25em;
+				border-left: none;    /* Bỏ gạch phân cách cho sạch giao diện */
+			}
 
-				/* #header .links ul li a {
-					border-bottom: 0;
-					font-family: "Raleway", Helvetica, sans-serif;
-					font-size: 0.7em;
-					font-weight: 400;
-					letter-spacing: 0.25em;
-					text-transform: uppercase;
-				} */
+			/* ĐẨY RIÊNG MỤC ARCHIVES SANG SÁT LỀ PHẢI MÀ KHÔNG LÀM HỎNG CUM GIỮA */
+			#header .links ul li.nav-right {
+				position: absolute;
+				right: 1.5em;       /* Đặt nằm sát lề phải */
+				top: 50%;
+				transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+				margin-left: 0;
+				padding-left: 0;
+			}
 
-				#header .links ul li a {
-					border-bottom: 0;
-					font-family: "Raleway", Helvetica, sans-serif;
-					font-size: 0.7em;
-					font-weight: 400;
-					letter-spacing: 0.25em;
-					text-transform: uppercase;
-					
-					/* Bổ sung để làm tâm định vị cho đường gạch chân */
-					position: relative;
-					display: inline-block;
-					padding-bottom: 4px; 
-				}
+			#header .links ul li:first-child {
+				border-left: 0;
+				margin-left: 0;
+				padding-left: 0;
+			}
 
-				/* Tạo đường gạch chân ẩn bằng kỹ thuật pseudo-element */
-				#header .links ul li a::after {
-					content: '';
-					position: absolute;
-					width: 100%;
-					height: 2px;          /* Độ dày của nét gạch */
-					bottom: 0;
-					left: 0;
-					background-color: #2ebaae; /* Màu xanh ngọc mặc định của template */
-					
-					/* Hiệu ứng thu nhỏ về ẩn đi mặc định */
-					transform: scaleX(0);
-					transform-origin: bottom right;
-					transition: transform 0.25s ease-out;
-				}
+			#header .links ul li a {
+				border-bottom: 0;
+				font-family: "Raleway", Helvetica, sans-serif;
+				font-size: 0.7em;
+				font-weight: 400;
+				letter-spacing: 0.25em;
+				text-transform: uppercase;
+				position: relative;
+				display: inline-block;
+				padding-bottom: 4px; 
+			}
 
-				/* Hiệu ứng trượt thanh gạch chân ra khi di chuột (Hover) hoặc khi Trang đang mở (Active) */
-				#header .links ul li a:hover::after,
-				#header .links ul li a.active::after {
-					transform: scaleX(1);
-					transform-origin: bottom left;
-				}
+			#header .links ul li a::after {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 2px;
+				bottom: 0;
+				left: 0;
+				background-color: #2ebaae;
+				transform: scaleX(0);
+				transform-origin: bottom right;
+				transition: transform 0.25s ease-out;
+			}
+
+			#header .links ul li a:hover::after,
+			#header .links ul li a.active::after {
+				transform: scaleX(1);
+				transform-origin: bottom left;
+			}
 
 		#header .main {
 			height: inherit;
@@ -3762,6 +3769,9 @@ ul.contact {
 		.projects-page #main {
 			max-width: 52em;
 		}
+		.research-page #main {
+			max-width: 52em;
+		}
 
 		.center-page #sidebar {
 			max-width: 52em;    
@@ -3773,6 +3783,14 @@ ul.contact {
 		}
 		
 		.projects-page #sidebar {
+			max-width: 52em;    
+			width: 100%;
+			margin-top: 2em;
+			padding-left: 3em;   
+			padding-right: 0em;
+			box-sizing: border-box;
+		}
+		.research-page #sidebar {
 			max-width: 52em;    
 			width: 100%;
 			margin-top: 2em;
@@ -3795,8 +3813,29 @@ ul.contact {
 			z-index: 99;
 			will-change: transform, top;
 		}
+		.research-page #research-toc {
+			position: fixed;
+			left: calc(50% + 26em + 3em + 25px);
+			right: auto;
+			top: 8.2em;         
+			width: 180px;   
+			background: transparent;
+			border: none;
+			padding: 0;
+			margin: 0;
+			text-align: left;
+			z-index: 99;
+			will-change: transform, top;
+		}
 
 		.projects-page #project-toc header a {
+			color: #999999; 
+			font-weight: 400;
+			border-bottom: none;
+			display: inline-block;
+			transition: transform 0.25s ease, color 0.25s ease, font-weight 0.25s ease;
+		}
+		.research-page #research-toc header a {
 			color: #999999; 
 			font-weight: 400;
 			border-bottom: none;
@@ -3808,10 +3847,155 @@ ul.contact {
 			color: #2ebaae !important; 
 			transform: translateX(6px);
 		}
+		.research-page #research-toc header a:hover {
+			color: #2ebaae !important; 
+			transform: translateX(6px);
+		}
 
 		.projects-page #project-toc header a.active {
 			color: #000000 !important; 
 			font-weight: 900;          
 			transform: translateX(4px); 
 		}
+		.research-page #research-toc header a.active {
+			color: #000000 !important; 
+			font-weight: 900;          
+			transform: translateX(4px); 
+		}
 	}
+/* ==========================================================================
+   MEMBERS PAGE STYLING (COMPACT VERSION)
+   ========================================================================== */
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); /* Thu nhỏ chiều rộng ô */
+    gap: 1.2em;
+    margin: 1em 0 2.5em 0;
+}
+
+.member-card {
+    background: #ffffff;
+    border: solid 1px rgba(100, 94, 94, 0.3);
+    border-radius: 14px;
+    padding: 1.2em 1em; /* Giảm padding giúp card gọn gàng */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.member-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    border-color: #2ebaae;
+}
+
+.member-avatar {
+    width: 70px; /* Thu nhỏ avatar từ 90px xuống 70px */
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.8em;
+    border: 2px solid #2ebaae;
+}
+
+.member-name {
+    font-size: 0.85em;
+    font-weight: 800;
+    margin-bottom: 0.2em;
+    text-transform: none;
+    letter-spacing: 0.03em;
+    color: #000000;
+    line-height: 1.3;
+}
+
+.member-role {
+    font-size: 0.72em;
+    color: #666666;
+    margin-bottom: 0.6em;
+    font-weight: 600;
+}
+
+.member-links {
+    margin-top: 0.2em;
+    display: flex;
+    gap: 0.8em;
+}
+
+.member-links a {
+    color: #888888;
+    font-size: 1em;
+    border-bottom: none;
+}
+
+.member-links a:hover {
+    color: #2ebaae !important;
+}
+
+.member-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.3em;
+    margin: 0.5em 0 0.6em 0;
+}
+
+.tag-badge {
+    background: rgba(46, 186, 174, 0.1);
+    color: #2ebaae;
+    font-size: 0.62em;
+    padding: 0.2em 0.5em;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+/* Cấu hình Floating TOC bên phải cho trang Members */
+@media screen and (min-width: 1280px) {
+    .members-page #main {
+        max-width: 52em;
+    }
+
+    .members-page #sidebar {
+        max-width: 52em;    
+        width: 100%;
+        margin-top: 2em;
+        padding-left: 3em;   
+        padding-right: 0em;
+        box-sizing: border-box;
+    }
+
+    .members-page #members-toc {
+        position: fixed;
+        left: calc(50% + 26em + 3em + 25px);
+        right: auto;
+        top: 8.2em;         
+        width: 180px;   
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        z-index: 99;
+        will-change: transform, top;
+    }
+
+    .members-page #members-toc header a {
+        color: #999999; 
+        font-weight: 400;
+        border-bottom: none;
+        display: inline-block;
+        transition: transform 0.25s ease, color 0.25s ease, font-weight 0.25s ease;
+    }
+
+    .members-page #members-toc header a:hover {
+        color: #2ebaae !important; 
+        transform: translateX(6px);
+    }
+
+    .members-page #members-toc header a.active {
+        color: #000000 !important; 
+        font-weight: 900;          
+        transform: translateX(4px); 
+    }
+}
