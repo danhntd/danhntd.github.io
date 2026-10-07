@@ -20,7 +20,6 @@
 
 				<!-- Header -->
 					<header id="header">
-						<!-- <h1><a href="index.html">Thanh-Danh Nguyen</a></h1> -->
 						<nav class="links">
 							<ul>
 								<li><a href="index.html">Home</a></li>
@@ -28,7 +27,6 @@
 								<li><a href="research.html">Research</a></li>
 								<li><a href="projects.html"><b>Projects</b></a></li>
 								<li><a href="contact.html">Contact</a></li>
-								<!-- <li class="nav-right"><a href="arXiv.html">arXiv</a></li> -->
 							</ul>
 						</nav>
 						<nav class="main">
@@ -42,413 +40,433 @@
 
 				<!-- Menu -->
 					<section id="menu">
-
-						<!-- Links -->
-							<section>
-								<ul class="links">
-									<li><a href="index.html">Home</a></li>
-									<li><a href="cv.html">Curriculum Vitae</a></li>
-									<li><a href="research.html">Research</a></li>
-									<li><a href="projects.html"><b>Projects</b></a></li>
-									<li><a href="contact.html">Contact</a></li>
-									<!-- <li><a href="arXiv.html">arXiv</a></li> -->
-								</ul>
-							</section>
-
+						<section>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="cv.html">Curriculum Vitae</a></li>
+								<li><a href="research.html">Research</a></li>
+								<li><a href="projects.html"><b>Projects</b></a></li>
+								<li><a href="contact.html">Contact</a></li>
+							</ul>
+						</section>
 					</section>
 
 				<!-- Main -->
 					<div id="main">
 
-						<!-- Post -->
-						<article class="post" id="CAMO-InstSynth">
-							<header>
-								<div class="title">
-									<h2><a href="#">CAMO-InstSynth</a></h2>
-									<p>CAMO-InstSynth: Few-shot Camouflage Instance Segmentation with Multi-Conditional Background Synthesis and Generative Augmentation</p>
+						<!-- 1. DUAL-TCR -->
+						<article class="project-card" id="Dual-TCR">
+							<div class="project-badge">
+								<span class="badge-dot"></span> Pattern Recognition Letters 2026
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\dualtcr_project.jpg" alt="Dual-TCR" />
 								</div>
-								<div class="meta">
-									<time class="published">Apr 2026</time>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\PRLetters2026_Dual_TCR.pdf">Dual-TCR: A Dual-Branch Target Consistency Reward Framework for Training-Free Personalized Segmentation</a></h2>
+									<div class="project-authors">
+										Minh-Khanh Le, <b>Thanh-Danh Nguyen</b>†, Vinh-Tiep Nguyen, and Tam V. Nguyen
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Personalized Segmentation</span>
+										<span class="tag-pill orange">Target Consistency Reward</span>
+										<span class="tag-pill blue">Training-Free SAM</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/KaitoEight/dual-tcr" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1016/j.patrec.2026.09.047" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\PRLetters2026_Dual_TCR.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
 								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\camoinstsynth_project.jpg" alt=""  /></a>
-
-								<p align="justify">Camouflage object detection and instance segmentation remain a challenging frontier in 
-									computer vision due to the intrinsic high similarity between foreground objects and their background 
-									surroundings. Furthermore, the scarcity of annotated camouflage data exacerbates the difficulty of 
-									training robust models, particularly in data-sparse regimes. In this paper, we introduce CAMO-InstSynth, 
-									a novel data enhancement framework exploiting the background context understanding to address few-shot 
-									camouflage object detection and instance segmentation. Accordingly, we propose a Multi-Conditional 
-									Background Synthesis Module that utilizes diffusion models to generate diverse, highfidelity backgrounds 
-									that maintain semantic consistency with camouflaged foregrounds. Unlike traditional augmentation 
-									techniques, which increase only the instance diversity, our method further conditions the synthesis 
-									process to simulate the camouflage environment. We validate our approach on the common CAMO-FS dataset 
-									over strong few-shot baselines. Our experiments demonstrate that CAMO-InstSynth significantly outperforms 
-									state-of-the-art methods, improving the iFS-RCNN baseline in both Segmentation and Detection tasks.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CAMO-InstSynth" class="button medium">Code</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\ACIIDS2026_CAMOInstSynth_Slides.pdf" class="button medium">Presentation</a>
-								</p>
-
-								<b>Citation</b>:
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> The Segment Anything Model (SAM) achieves strong zero-shot segmentation, but adapting it to recognize a user-specified object across images without manual prompting or retraining remains an open problem. Existing training-free methods extract a target embedding from a reference image and use feature similarity to generate automatic prompts. However, we find that both raw SAM and DINOv2 features produce unreliable localization in practice. The root cause is grid artifacts: periodic spatial distortions from patch tokenization that corrupt similarity maps and displace prompts onto background regions. To alleviate this, we introduce Dual-TCR, a framework that explicitly decouples semantic localization from geometric segmentation. Specifically, we construct spatially coherent similarity maps via NVIDIA RADIO to mitigate patch grid artifacts, providing reliable prompts that guide SAM purely as a geometric mask decoder. To autonomously resolve the ambiguity between competing mask candidates, we propose the Target Consistency Reward (TCR), a zeroshot arbitrator scoring each candidate via feature alignment with the reference target embedding. We further introduce a Hybrid Refining Module (HRM) step, fusing outputs from both branches to produce a refined final output mask. Evaluated on the PerSeg benchmark, Dual-TCR achieves93.42% mIoU and 75.60% bIoU, establishing a new state-of-the-art specifically within the trainingfree category.</p>
 								<blockquote>
-										<b>Thanh-Danh Nguyen</b>, Vinh-Tiep Nguyen†, Kunpeng Li, and Tam V. Nguyen. 
-										“CAMO-InstSynth: Few-shot Camouflage Instance Segmentation with Multi-Conditional Background 
-										Synthesis and Generative Augmentation.” 
-										18th Asian Conference on Intelligent Information and Database Systems, 2026. 
-										[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1007/978-981-92-0068-9_39">DOI</a>,
-										<a style="color:rgb(0, 85, 255);" href="pdf\ACIIDS2026_CAMOInstSynth.pdf">PDF</a>]
+									<b>Citation:</b> Minh-Khanh Le, <b>Thanh-Danh Nguyen</b>†, Vinh-Tiep Nguyen, and Tam V. Nguyen. “Dual-TCR: A Dual-Branch Target Consistency Reward Framework for Training-Free Personalized Segmentation.” <i>Pattern Recognition Letters</i>, Oct 2026.
 								</blockquote>
-						</article>
-						
-						<!-- Post -->
-						<article class="post" id="Lite-DermosegDiff">
-							<header>
-								<div class="title">
-									<h2><a href="#">Lite-DermosegDiff</a></h2>
-									<p>A Knowledge Distillation Approach for Diffusion-based Generative Skin Lesion Segmentation</p>
-								</div>
-								<div class="meta">
-									<time class="published">Oct 2025</time>
-								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\litedermosegdiff_project.jpg" alt=""  /></a>
-
-								<p align="justify">Accurate skin lesion segmentation is crucial for early melanoma detection and reliable 
-									medical diagnosis. Recently, such generative diffusion-based segmentation models have achieved 
-									state-of-the-art performance in this task. However, their large number of parameters hinders the 
-									deployment in real-world clinical and mobile settings. A key challenge is how to compress these 
-									models while preserving their reliability in diagnosis. To this end, we propose an edge-focused 
-									knowledge distillation (EFKD) strategy for the generative diffusion-based skin lesion segmentation, 
-									prioritizing contour information transfer from teacher to student. Accordingly, we introduce 
-									Lite-DermoSegDiff, a lightweight diffusion-based lesion segmentation model that integrates knowledge 
-									distillation with boundary-aware supervision. This design ensures that the student network 
-									maintains sharp lesion boundaries while significantly reducing model parameters. Extensive 
-									experiments on the common ISIC2018 and HAM10000 dermoscopic benchmarks demonstrate that our 
-									method achieves up to 88.9% parameter reduction while maintaining competitive segmentation 
-									accuracy. These results show that diffusion-based segmentation models can be substantially 
-									compressed without compromising boundary awareness, paving the way for efficient and clinically 
-									deployable solutions in resource-constrained environments.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/hoangdv05/EFKD" class="button medium">Code</a>
-									<!-- <a style="color:rgb(0, 85, 255);" href="pdf\RIVF2025_LiteDermosegDiff_Poster.pdf" class="button medium">Poster</a> -->
-									<!-- <a style="color:rgb(0, 85, 255);" href="pdf\RIVF2025_LiteDermosegDiff_Slides.pdf" class="button medium">Presentation</a> -->
-								</p>
-
-								<b>Citation</b>:
-								<blockquote>
-										Viet-Hoang Doan, <b>Thanh-Danh Nguyen</b>†, Tuan-Kiet Ngo, and Vinh-Tiep Nguyen. 
-										“A Knowledge Distillation Approach for Diffusion-based Generative Skin Lesion Segmentation.” 
-										2025 RIVF International Conference on Computing and Communication Technologies. IEEE, 2025. 
-										[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/RIVF68649.2025.11365106">DOI</a>,
-										<a style="color:rgb(0, 85, 255);" href="pdf\RIVF2025_LiteDermosegDiff.pdf">PDF</a>]
-								</blockquote>
+							</div>
 						</article>
 
-						<!-- Post -->
-						<article class="post" id="CAMO-GenOS">
-							<header>
-								<div class="title">
-									<h2><a href="#">CAMO-GenOS</a></h2>
-									<p>Generative One-Shot Camouflage Instance Segmentation</p>
+						<!-- 2. TFKD -->
+						<article class="project-card" id="TFKD">
+							<div class="project-badge">
+								<span class="badge-dot"></span> ACOMPA 2026
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\tfkd_project.jpg" alt="TFKD" />
 								</div>
-								<div class="meta">
-									<time class="published">Jul 2025</time>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\ACOMPA2026_TFKD.pdf">Knowledge Distillation via Temporal Frequency for Efficient Generative Semantic Image Segmentation</a></h2>
+									<div class="project-authors">
+										Viet-Hoang Doan, <b>Thanh-Danh Nguyen</b>†, Vinh-Tiep Nguyen, and Tam V. Nguyen
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Knowledge Distillation</span>
+										<span class="tag-pill orange">Temporal Frequency</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/hoangdv05/TFKD" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="pdf\ACOMPA2026_TFKD.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
 								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\camo_genos_project.jpg" alt=""  /></a>
-
-								<p align="justify">Identifying camouflaged instances is a critical yet underexplored problem in computer 
-									vision, where traditional segmentation models often fail due to extreme visual similarity between 
-									foreground and background. While recent advances have shown promise with deep learning models, they 
-									heavily depend on large annotated datasets, which are costly and impractical to collect in camouflage 
-									scenarios. In this work, we tackle this limitation by introducing a novel framework, dubbed CAMO GenOS, 
-									that leverages one-shot annotated samples to drive a generative process for data enrichment. Our 
-									approach integrates prompt-guided and mask-conditioned generative mechanisms to synthesize diverse, 
-									high-fidelity camouflaged instances, thereby enhancing the learning capacity of segmentation models 
-									under minimal supervision. We demonstrate the effectiveness of our CAMO-GenOS by setting up a novel 
-									state-of-the-art baseline for one-shot camouflage instance segmentation research on the challenging 
-									CAMO-FS benchmark.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CAMO-GenOS" class="button medium">Code</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2025_CAMOGenOS_Poster.pdf" class="button medium">Poster</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2025_CAMOGenOS_Slides.pdf" class="button medium">Presentation</a>
-								</p>
-
-								<b>Citation</b>:
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Skin lesion segmentation is critical for early melanoma detection, yet the high computational overhead of generative diffusion-based models hinders practical clinical deployment. While knowledge distillation (KD) offers a promising approach toward model compression, existing spatial-domain methods often fail to capture the unique coarse-to-fine denoising dynamics inherent in diffusion processes. To address this limitation, we propose Temporal Frequency Knowledge Distillation (TFKD), a novel timestep-aware framework that operates in the Fourier domain to dynamically align the spectral characteristics of the teacher and student models across the denoising trajectory. By explicitly transferring structural and boundary knowledge according to the spectral progression of different denoising stages, TFKD ensures a lightweight student model robustly retains the generative prior of its larger counterpart. Extensive evaluations on the ISIC2018 and HAM10000 benchmarks demonstrate that TFKD consistently outperforms existing distillation techniques, achieving a superior balance between segmentation accuracy and inference efficiency. Furthermore, generalization experiments on the DUTS dataset reveal that the distilled model remains competitive beyond dermoscopic imaging. These results establish TFKD as a simple, highly effective, and plug-and-play strategy for deploying compact diffusion-based segmentation models in both medical and general vision tasks.</p>
 								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Vinh-Tiep Nguyen†, and Tam V. Nguyen, 
-									“Generative One-shot Camouflage Instance Segmentation.” 
-									2025 International Conference on Multimedia Analysis and Pattern Recognition. IEEE, 2025. 
-									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/MAPR67746.2025.11133872">DOI</a>,
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2025_CAMOGenOS.pdf">PDF</a>]
+									<b>Citation:</b> Viet-Hoang Doan, <b>Thanh-Danh Nguyen</b>†, Vinh-Tiep Nguyen, and Tam V. Nguyen. “Knowledge Distillation via Temporal Frequency for Efficient Generative Semantic Image Segmentation.” <i>20th International Conference on Advanced Computing and Analytics</i>. IEEE, 2026.
 								</blockquote>
+							</div>
 						</article>
 
-						<!-- Post -->
-						<article class="post" id="FS-CAMOFreq">
-							<header>
-								<div class="title">
-									<h2><a href="#">FS-CAMOFreq</a></h2>
-									<p>Few-Shot Instance Segmentation: An Exploration in the Frequency Domain for Camouflage Instances</p>
+						<!-- 3. CAMO-InstSynth -->
+						<article class="project-card" id="CAMO-InstSynth">
+							<div class="project-badge">
+								<span class="badge-dot"></span> ACIIDS 2026
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\camoinstsynth_project.jpg" alt="CAMO-InstSynth" />
 								</div>
-								<div class="meta">
-									<time class="published">Jul 2025</time>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\ACIIDS2026_CAMOInstSynth.pdf">CAMO-InstSynth: Few-shot Camouflage Instance Segmentation with Multi-Conditional Background Synthesis and Generative Augmentation</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>, Vinh-Tiep Nguyen†, Kunpeng Li, and Tam V. Nguyen
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Few-Shot Learning</span>
+										<span class="tag-pill orange">Camouflage Instance Segmentation</span>
+										<span class="tag-pill blue">Background Synthesis</span>
+										<span class="tag-pill purple">Generative Augmentation</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/CAMO-InstSynth" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1007/978-981-92-0068-9_39" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\ACIIDS2026_CAMOInstSynth.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<a href="pdf\ACIIDS2026_CAMOInstSynth_Slides.pdf" target="_blank" class="p-btn"><i class="fas fa-chalkboard-teacher"></i> Slides</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
 								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\fs_camofreq_project.jpg" alt=""  /></a>
-
-								<p align="justify">Few-shot instance segmentation is an intense yet essential task, particularly in camouflaged 
-									scenarios where visual ambiguity between foreground and background makes instance level recognition more 
-									difficult. Prior approaches primarily focused on image augmentations in the color space domain to provide 
-									diverse perspective information to the segmentation models. However, this type of augmentation often fails 
-									to capture the full range of visual characteristics needed for robust generalization, particularly in 
-									camouflage images, due to the limited similar representation in the color space domain. To this end, we 
-									tackle this gap by exploiting a novel approach to augment and enhance image features in the derivative 
-									frequency domain. Accordingly, we propose a novel framework tailored for few-shot camouflage instance 
-									segmentation via the instance-aware frequency-based augmentation, dubbed FS-CAMOFreq, to enhance image 
-									diversity while preserving semantic structure, thereby improving the ability of the few-shot segmentor 
-									to learn from limited data. Extensive experiments on the challenging CAMO-FS benchmark demonstrate that 
-									our approach achieves superior performance compared to state-of-the-art baselines.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/FS-CAMOFreq" class="button medium">Code</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2025_FSCAMOFreq_Poster.pdf" class="button medium">Poster</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2025_FSCAMOFreq_Slides.pdf" class="button medium">Presentation</a>
-								</p>
-
-								<b>Citation</b>:
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Camouflage object detection and instance segmentation remain a challenging frontier in computer vision due to the intrinsic high similarity between foreground objects and their background surroundings. Furthermore, the scarcity of annotated camouflage data exacerbates the difficulty of training robust models, particularly in data-sparse regimes. In this paper, we introduce CAMO-InstSynth, a novel data enhancement framework exploiting the background context understanding to address few-shot camouflage object detection and instance segmentation. Accordingly, we propose a Multi-Conditional Background Synthesis Module that utilizes diffusion models to generate diverse, highfidelity backgrounds that maintain semantic consistency with camouflaged foregrounds. Unlike traditional augmentation techniques, which increase only the instance diversity, our method further conditions the synthesis process to simulate the camouflage environment. We validate our approach on the common CAMO-FS dataset over strong few-shot baselines. Our experiments demonstrate that CAMO-InstSynth significantly outperforms state-of-the-art methods, improving the iFS-RCNN baseline in both Segmentation and Detection tasks.</p>
 								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Hung-Phu Cao, Thanh Duc Ngo, Vinh-Tiep Nguyen†, and Tam V. Nguyen, 
-									“Few-Shot Instance Segmentation: An Exploration in the Frequency Domain for Camouflage Instances.” 
-									2025 International Conference on Multimedia Analysis and Pattern Recognition. IEEE, 2025. 
-									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/MAPR67746.2025.11133964">DOI</a>,
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2025_FSCAMOFreq.pdf">PDF</a>]
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>, Vinh-Tiep Nguyen†, Kunpeng Li, and Tam V. Nguyen. “CAMO-InstSynth: Few-shot Camouflage Instance Segmentation with Multi-Conditional Background Synthesis and Generative Augmentation.” <i>18th Asian Conference on Intelligent Information and Database Systems</i>, 2026.
 								</blockquote>
+							</div>
 						</article>
 
-						<!-- Post -->
-						<article class="post" id="CAMUL">
-							<header>
-								<div class="title">
-									<h2><a href="#">CAMUL</a></h2>
-									<p>Context-Aware Multi-conditional Instance Synthesis for Image Segmentation</p>
+						<!-- 4. Lite-DermosegDiff -->
+						<article class="project-card" id="Lite-DermosegDiff">
+							<div class="project-badge">
+								<span class="badge-dot"></span> RIVF 2025
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\litedermosegdiff_project.jpg" alt="Lite-DermosegDiff" />
 								</div>
-								<div class="meta">
-									<time class="published">Jun 2025</time>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\RIVF2025_LiteDermosegDiff.pdf">A Knowledge Distillation Approach for Diffusion-based Generative Skin Lesion Segmentation</a></h2>
+									<div class="project-authors">
+										Viet-Hoang Doan, <b>Thanh-Danh Nguyen</b>†, Tuan-Kiet Ngo, and Vinh-Tiep Nguyen
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Edge-Focused KD</span>
+										<span class="tag-pill orange">Dermoscopy Segmentation</span>
+										<span class="tag-pill blue">Model Compression</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/hoangdv05/EFKD" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1109/RIVF68649.2025.11365106" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\RIVF2025_LiteDermosegDiff.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
 								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\camul_project.jpg" alt=""  /></a>
-
-								<p align="justify">Instance image segmentation task requires training with abundant annotated data to achieve 
-									high accuracy. Recently, conditional image synthesis has demonstrated its effectiveness in generating 
-									synthetic data for this task. However, existing image synthesis models face challenges in generating target 
-									instances to match the masks with complex shapes. Moreover, others fail to create diverse instances due to 
-									utilizing low-context simple text prompts. To address these issues, we propose CAMUL, a framework for 
-									context-aware multi-conditional instance synthesis. CAMUL introduces two key innovations: CARP 
-									(cross-attention refinement prompting) to enhance the alignment of generated instances with conditional 
-									masks, and iCAFF (incremental context-aware feature fusion) to determine the general embeddings of the 
-									instances for a more precise context understanding. Our method significantly improves segmentation 
-									performance, increasing up to 15.34% AP on Cityscapes and 3.34% AP on the large-scale ADE20K benchmark 
-									compared to the baselines.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CAMUL" class="button medium">Code</a>
-								</p>
-							
-								<b>Citation</b>:
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Accurate skin lesion segmentation is crucial for early melanoma detection and reliable medical diagnosis. Recently, such generative diffusion-based segmentation models have achieved state-of-the-art performance in this task. However, their large number of parameters hinders the deployment in real-world clinical and mobile settings. A key challenge is how to compress these models while preserving their reliability in diagnosis. To this end, we propose an edge-focused knowledge distillation (EFKD) strategy for the generative diffusion-based skin lesion segmentation, prioritizing contour information transfer from teacher to student. Accordingly, we introduce LiteDermoSegDiff, a lightweight diffusion-based lesion segmentation model that integrates knowledge distillation with boundary-aware supervision. This design ensures that the student network maintains sharp lesion boundaries while significantly reducing model parameters. Extensive experiments on the common ISIC2018 and HAM10000 dermoscopic benchmarks demonstrate that our method achieves up to 88.9% parameter reduction while maintaining competitive segmentation accuracy. These results show that diffusion-based segmentation models can be substantially compressed without compromising boundary awareness, paving the way for efficient and clinically deployable solutions in resource-constrained environments.</p>
 								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Trong-Tai Dam Vu, Bich-Nga Pham, Thanh Duc Ngo, Tam V. Nguyen, and Vinh-Tiep Nguyen†,
-									“CAMUL: Context-Aware Multi-conditional Instance Synthesis for Image Segmentation”, 
-									IEEE MultiMedia, Jun 2025. IF = 3.3. 
-									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/MMUL.2025.3578972">DOI</a>,
-									<a style="color:rgb(0, 85, 255);" href="pdf\IEEEMultiMedia_CAMUL.pdf">PDF</a>]
+									<b>Citation:</b> Viet-Hoang Doan, <b>Thanh-Danh Nguyen</b>†, Tuan-Kiet Ngo, and Vinh-Tiep Nguyen. “A Knowledge Distillation Approach for Diffusion-based Generative Skin Lesion Segmentation.” <i>2025 RIVF International Conference on Computing and Communication Technologies</i>. IEEE, 2025.
 								</blockquote>
+							</div>
 						</article>
 
-						<!-- Post -->
-						<article class="post" id="LTSP">
-							<header>
-								<div class="title">
-									<h2><a href="#">LTSP</a></h2>
-									<p>Nighttime Scene Understanding with Label Transfer Scene Parser</p>
+						<!-- 5. CAMO-GenOS -->
+						<article class="project-card" id="CAMO-GenOS">
+							<div class="project-badge">
+								<span class="badge-dot"></span> MAPR 2025
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\camo_genos_project.jpg" alt="CAMO-GenOS" />
 								</div>
-								<div class="meta">
-									<time class="published">Sep 2024</time>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\MAPR2025_CAMOGenOS.pdf">Generative One-Shot Camouflage Instance Segmentation</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>, Vinh-Tiep Nguyen†, and Tam V. Nguyen
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">One-Shot Segmentation</span>
+										<span class="tag-pill orange">Camouflage</span>
+										<span class="tag-pill blue">Generative Augmentation</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/CAMO-GenOS" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1109/MAPR67746.2025.11133872" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\MAPR2025_CAMOGenOS.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<a href="pdf\MAPR2025_CAMOGenOS_Slides.pdf" target="_blank" class="p-btn"><i class="fas fa-chalkboard-teacher"></i> Slides</a>
+										<a href="pdf\MAPR2025_CAMOGenOS_Poster.pdf" target="_blank" class="p-btn"><i class="fas fa-image"></i> Poster</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
 								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\ltsp_project.jpg" alt=""  /></a>
-
-								<p align="justify">Semantic segmentation plays a crucial role in traffic scene understanding, especially in nighttime condition. 
-								This paper tackles the task of semantic segmentation on nighttime scenes. The largest challenge of this task is the lack of 
-								annotated nighttime images to train a deep learning-based scene parser. The existing annotated datasets are abundant in daytime 
-								condition but scarce in nighttime due to the high cost. Thus, we propose a novel Label Transfer Scene Parser (LTSP) framework 
-								for nighttime scene semantic segmentation by leveraging daytime annotation transfer. Our framework performs segmentation in 
-								the dark without training on real nighttime annotated data. In particular, we propose translating daytime images to 
-								nighttime condition to obtain more data with annotation in an efficient way. In addition, we utilize the pseudo-labels 
-								inferred from unlabeled nighttime scenes to further train the scene parser. The novelty of our work is the ability to 
-								perform nighttime segmentation via daytime annotated label and nighttime synthetic versions of the same set of images. 
-								The extensive experiments demonstrate the improvement and efficiency of our scene parser over the state-of-the-art methods 
-								with the similar semi-supervised approach on the benchmark of Nighttime Driving Test dataset. Notably, our proposed method 
-								utilizes only one tenth of the amount of labeled and unlabeled data in comparison with the previous methods.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/Label_Transfer_Scene_Parser" class="button medium">Code</a>
-								</p>
-
-								<b>Citation</b>:
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Identifying camouflaged instances is a critical yet underexplored problem in computer vision, where traditional segmentation models often fail due to extreme visual similarity between foreground and background. While recent advances have shown promise with deep learning models, they heavily depend on large annotated datasets, which are costly and impractical to collect in camouflage scenarios. In this work, we tackle this limitation by introducing a novel framework, dubbed CAMOGenOS, that leverages one-shot annotated samples to drive a generative process for data enrichment. Our approach integrates prompt-guided and mask-conditioned generative mechanisms to synthesize diverse, high-fidelity camouflaged instances, thereby enhancing the learning capacity of segmentation models under minimal supervision. We demonstrate the effectiveness of our CAMO-GenOS by setting up a novel state-of-the-art baseline for one-shot camouflage instance segmentation research on the challenging CAMO-FS benchmark.</p>
 								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Nguyen Phan, Tam V. Nguyen†, Vinh-Tiep Nguyen, and Minh-Triet Tran, 
-									“Nighttime Scene Understanding with Label Transfer Scene Parser”, Image and Vision Computing, Sep 2024.
-									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1016/j.imavis.2024.105257">DOI</a>,
-									<a style="color:rgb(0, 85, 255);" href="pdf\IVC__Label_Transfer.pdf">PDF</a>]
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>, Vinh-Tiep Nguyen†, and Tam V. Nguyen. “Generative One-shot Camouflage Instance Segmentation.” <i>2025 International Conference on Multimedia Analysis and Pattern Recognition</i>. IEEE, 2025.
 								</blockquote>
+							</div>
 						</article>
 
-						
-						
-						<!-- Post -->
-						<article class="post" id="CAMO-FS">
-							<header>
-								<div class="title">
-									<h2><a href="#">CAMO-FS</a></h2>
-									<p>Few-shot Learning for Animal Detection and Segmentation</p>
+						<!-- 6. FS-CAMOFreq -->
+						<article class="project-card" id="FS-CAMOFreq">
+							<div class="project-badge">
+								<span class="badge-dot"></span> MAPR 2025
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\fs_camofreq_project.jpg" alt="FS-CAMOFreq" />
 								</div>
-								<div class="meta">
-									<time class="published">Jul 2024</time>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\MAPR2025_FSCAMOFreq.pdf">Few-Shot Instance Segmentation: An Exploration in the Frequency Domain for Camouflage Instances</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>, Hung-Phu Cao, Thanh Duc Ngo, Vinh-Tiep Nguyen†, and Tam V. Nguyen
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Few-Shot Segmentation</span>
+										<span class="tag-pill orange">Frequency </span>
+										<span class="tag-pill blue">Frequency Augmentation</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/FS-CAMOFreq" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1109/MAPR67746.2025.11133964" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\MAPR2025_FSCAMOFreq.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<a href="pdf\MAPR2025_FSCAMOFreq_Slides.pdf" target="_blank" class="p-btn"><i class="fas fa-chalkboard-teacher"></i> Slides</a>
+										<a href="pdf\MAPR2025_FSCAMOFreq_Poster.pdf" target="_blank" class="p-btn"><i class="fas fa-image"></i> Poster</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
 								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\camofs_project.jpg" alt=""  /></a>
-
-								<p align="justify">Camouflaged object detection and segmentation is a new and challenging research topic in computer vision. 
-									There is a serious issue of lacking data on concealed objects such as camouflaged animals in natural scenes. In this paper, 
-									we address the problem of few-shot learning for camouflaged object detection and segmentation. To this end, we first collect 
-									a new dataset, CAMO-FS, for the benchmark. As camouflaged instances are challenging to recognize due to their similarity compared 
-									to the surroundings, we guide our models to obtain camouflaged features that highly distinguish the instances from the background. 
-									In this work, we propose FS-CDIS, a framework to efficiently detect and segment camouflaged instances via two loss functions 
-									contributing to the training process. Firstly, the instance triplet loss with the characteristic of differentiating the anchor, 
-									which is the mean of all camouflaged foreground points, and the background points are employed to work at the instance level. 
-									Secondly, to consolidate the generalization at the class level, we present instance memory storage with the scope of storing 
-									camouflaged features of the same category, allowing the model to capture further class-level information during the learning 
-									process. The extensive experiments demonstrated that our proposed method achieves state-of-the-art performance on the newly 
-									collected dataset.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/FS-CDIS" class="button medium">Code</a>
-									<a style="color:rgb(0, 85, 255);" href="https://www.kaggle.com/datasets/danhnt/camo-fs-dataset" class="button medium">Dataset</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\IEEEAccess_CamoFS_Poster.pdf" class="button medium">Poster</a>
-								</p>
-									
-								<b>Citation</b>:
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Few-shot instance segmentation is an intense yet essential task, particularly in camouflaged scenarios where visual ambiguity between foreground and background makes instancelevel recognition more difficult. Prior approaches primarily focused on image augmentations in the color space domain to provide diverse perspective information to the segmentation models. However, this type of augmentation often fails to capture the full range of visual characteristics needed for robust generalization, particularly in camouflage images, due to the limited similar representation in the color space domain. To this end, we tackle this gap by exploiting a novel approach to augment and enhance image features in the derivative frequency domain. Accordingly, we propose a novel framework tailored for few-shot camouflage instance segmentation via the instance-aware frequency-based augmentation, dubbed FS-CAMOFreq, to enhance image diversity while preserving semantic structure, thereby improving the ability of the few-shot segmentor to learn from limited data. Extensive experiments on the challenging CAMO-FS benchmark demonstrate that our approach achieves superior performance compared to state-of-the-art baselines.</p>
 								<blockquote>
-									<b>Thanh-Danh Nguyen</b>*, Anh-Khoa Nguyen Vu*, Nhat-Duy Nguyen*, Vinh-Tiep Nguyen, Thanh Duc Ngo, Thanh-Toan Do, 
-									Minh-Triet Tran, and Tam V. Nguyen†, “The Art of Camouflage: Few-shot Learning for Animal Detection and Segmentation”, 
-                                    IEEE Access, Jul 2024. IF = 3.4. 
-									[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/document/10608133">DOI</a>,
-									<a style="color:rgb(0, 85, 255);" href="https://arxiv.org/abs/2304.07444">ArXiv</a>]
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>, Hung-Phu Cao, Thanh Duc Ngo, Vinh-Tiep Nguyen†, and Tam V. Nguyen. “Few-Shot Instance Segmentation: An Exploration in the Frequency Domain for Camouflage Instances.” <i>2025 International Conference on Multimedia Analysis and Pattern Recognition</i>. IEEE, 2025.
 								</blockquote>
+							</div>
 						</article>
-						
-						<!-- Post -->
-						<article class="post" id="InstSynth">
-							<header>
-								<div class="title">
-									<h2><a href="#">InstSynth</a></h2>
-									<p>Conditional Data Synthesis for Scene Understanding</p>
-								</div>
-								<div class="meta">
-									<time class="published">Jun 2024</time>
-								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\instsynth_project.jpg" alt=""  /></a>
 
-								<p align="justify">Scene understanding at the instance level is an essential task in computer vision to support modern 
-								Advanced Driver Assistance Systems. Solutions have been proposed with abundant annotated training data. However, the annotation at 
-								the instance level is high-cost due to huge manual efforts. In this work, we solve this problem by introducing 
-								InstSynth, an advanced framework leveraging instance-wise annotations as conditions to enrich the training data. 
-								Existing methods focused on semantic segmentation via using prompts to synthesize image-annotation pairs, facing 
-								an unrealistic manner. Our proposals utilize the strength of such large generative models to synthesize instance 
-								data with prompt-guided and maskbased mechanisms to boost the performance of the instancelevel scene understanding 
-								models. We empirically improve the performance of the latest instance segmentation architectures of FastInst and 
-								OneFormer by 14.49% and 11.59% AP, respectively, evaluated on the Cityscapes benchmark. Accordingly, we construct 
-								an instance-level synthesized dataset, dubbed IS-Cityscapes, with over a 4× larger number of instances in comparison 
-								with the vanilla Cityscapes.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/InstSynth" class="button medium">Code</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2024_InstSynth_Poster.pdf" class="button medium">Poster</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2024_InstSynth_Slides.pdf" class="button medium">Presentation</a>
-								</p>
-							
-								<b>Citation</b>:
+						<!-- 7. CAMUL -->
+						<article class="project-card" id="CAMUL">
+							<div class="project-badge">
+								<span class="badge-dot"></span> IEEE MultiMedia 2025
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\camul_project.jpg" alt="CAMUL" />
+								</div>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\IEEEMultiMedia_CAMUL.pdf">CAMUL: Context-Aware Multi-conditional Instance Synthesis for Image Segmentation</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>, Trong-Tai Dam Vu, Bich-Nga Pham, Thanh Duc Ngo, Tam V. Nguyen, and Vinh-Tiep Nguyen†
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Instance Synthesis</span>
+										<span class="tag-pill orange">Cross-Attention</span>
+										<span class="tag-pill blue">Incremental Feature Fusion</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/CAMUL" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1109/MMUL.2025.3578972" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\IEEEMultiMedia_CAMUL.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
+								</div>
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Instance image segmentation task requires training with abundant annotated data to achieve high accuracy. Recently, conditional image synthesis has demonstrated its effectiveness in generating synthetic data for this task. However, existing image synthesis models face challenges in generating target instances to match the masks with complex shapes. Moreover, others fail to create diverse instances due to utilizing low-context simple text prompts. To address these issues, we propose CAMUL, a framework for context-aware multiconditional instance synthesis. CAMUL introduces two key innovations: CARP (cross-attention refinement prompting) to enhance the alignment of generated instances with conditional masks, and iCAFF (incremental context-aware feature fusion) to determine the general embeddings of the instances for a more precise context understanding. Our method significantly improves segmentation performance, increasing up to 15.34% average precision (AP) on Cityscapes and 3.34% AP on the large-scale ADE20K benchmark compared to the baselines.</p>
 								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Bich-Nga Pham, Trong-Tai Dam Vu, Vinh-Tiep Nguyen†, Thanh Duc Ngo, and Tam V. Nguyen. 
-									“InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding.” 
-									2024 International Conference on Multimedia Analysis and Pattern Recognition. IEEE, 2024. 
-									[<a style="color:rgb(0, 85, 255);" href="https://doi.org/10.1109/MAPR63514.2024.10660775">DOI</a>,
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2024_InstSynth.pdf">PDF</a>]
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>, Trong-Tai Dam Vu, Bich-Nga Pham, Thanh Duc Ngo, Tam V. Nguyen, and Vinh-Tiep Nguyen†. “CAMUL: Context-Aware Multi-conditional Instance Synthesis for Image Segmentation.” <i>IEEE MultiMedia</i>, Jun 2025.
 								</blockquote>
+							</div>
 						</article>
-						
-						<!-- Post -->
-						<article class="post" id="CE-OST">
-							<header>
-								<div class="title">
-									<h2><a href="#">CE-OST</a></h2>
-									<p>Contour Emphasis for Camouflage Instance Segmentation</p>
-								</div>
-								<div class="meta">
-									<time class="published">Oct 2023</time>
-								</div>
-							</header>
-								<a href="#" class="image featured"><img src="images\ceost_project.jpg" alt=""  /></a>
 
-								<p align="justify">Understanding camouflage images at instance level is such a challenging task in computer vision. 
-								Since the camouflage instances have their colors and textures similar to the background, the key to distinguish 
-								them in the images should rely on their contours. The contours seperate the instance from the background, thus 
-								recognizing these contours should break their camouflage mechanism. To this end, we address the problem of camouflage 
-								instance segmentation via the Contour Emphasis approach. We improve the ability of the segmentation models by 
-								enhancing the contours of the camouflaged instances. We propose the CE-OST framework which employs the well-known 
-								architecture of Transformer-based models in a one-stage manner to boost the performance of camouflaged instance 
-								segmentation. The extensive experiments prove our contributions over the state-of-the-art baselines on different 
-								benchmarks, i.e. CAMO++, COD10K and NC4K.</p>
-								<p align="centering">
-									<a style="color:rgb(0, 85, 255);" href="https://github.com/danhntd/CE-OST" class="button medium">Code</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2023_CE-OST_Poster.pdf" class="button medium">Poster</a>
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2023_CE-OST_Slides.pdf" class="button medium">Presentation</a>
-								</p>
-
-								<b>Citation</b>:
+						<!-- 8. LTSP -->
+						<article class="project-card" id="LTSP">
+							<div class="project-badge">
+								<span class="badge-dot"></span> Image and Vision Computing 2024
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\ltsp_project.jpg" alt="LTSP" />
+								</div>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\IVC__Label_Transfer.pdf">Nighttime Scene Understanding with Label Transfer Scene Parser</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>, Nguyen Phan, Tam V. Nguyen†, Vinh-Tiep Nguyen, and Minh-Triet Tran
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Nighttime Parsing</span>
+										<span class="tag-pill orange">Label Transfer</span>
+										<span class="tag-pill blue">Day-to-Night Translation</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/Label_Transfer_Scene_Parser" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1016/j.imavis.2024.105257" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\IVC__Label_Transfer.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
+								</div>
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Semantic segmentation plays a crucial role in traffic scene understanding, especially in nighttime conditions. This paper tackles the task of semantic segmentation in nighttime scenes. The largest challenge of this task is the lack of annotated nighttime images to train a deep learning-based scene parser. The existing annotated datasets are abundant in daytime conditions but scarce in nighttime due to the high cost. Thus, we propose a novel Label Transfer Scene Parser (LTSP) framework for nighttime scene semantic segmentation by leveraging daytime annotation transfer. Our framework performs segmentation in the dark without training on real nighttime an-notated data. In particular, we propose translating daytime images to nighttime conditions to obtain more data with annotation in an efficient way. In addition, we utilize the pseudo-labels inferred from unlabeled nighttime scenes to further train the scene parser. The novelty of our work is the ability to perform nighttime segmentation via daytime annotated labels and nighttime synthetic versions of the same set of images. The extensive exper-iments demonstrate the improvement and efficiency of our scene parser over the state-of-the-art methods with a similar semi-supervised approach on the benchmark of Nighttime Driving Test dataset. Notably, our proposed method utilizes only one-tenth of the amount of labeled and unlabeled data in comparison with the previous methods.</p>
 								<blockquote>
-									<b>Thanh-Danh Nguyen</b>, Duc-Tuan Luu, Vinh-Tiep Nguyen†, and Thanh Duc Ngo, 
-									“CE-OST: Contour Emphasis for One-Stage Transformer-based Camouflage Instance Segmentation.” 
-									2023 International Conference on Multimedia Analysis and Pattern Recognition. IEEE, 2023. 
-									[<a style="color:rgb(0, 85, 255);" href="https://ieeexplore.ieee.org/document/10288682">DOI</a>,
-									<a style="color:rgb(0, 85, 255);" href="pdf\MAPR2023_CE-OST.pdf">PDF</a>]
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>, Nguyen Phan, Tam V. Nguyen†, Vinh-Tiep Nguyen, and Minh-Triet Tran. “Nighttime Scene Understanding with Label Transfer Scene Parser.” <i>Image and Vision Computing</i>, Sep 2024.
 								</blockquote>
-
-								<i>* indicates equal contribution, † denotes corresponding authors.</i>
-
+							</div>
 						</article>
-						
+
+						<!-- 9. CAMO-FS -->
+						<article class="project-card" id="CAMO-FS">
+							<div class="project-badge">
+								<span class="badge-dot"></span> IEEE Access 2024
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\camofs_project.jpg" alt="CAMO-FS" />
+								</div>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\IEEEAccess_CamoFS.pdf">The Art of Camouflage: Few-shot Learning for Animal Detection and Segmentation</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>*, Anh-Khoa Nguyen Vu*, Nhat-Duy Nguyen*, Vinh-Tiep Nguyen, Thanh Duc Ngo, Thanh-Toan Do, Minh-Triet Tran, and Tam V. Nguyen†
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Camouflage</span>
+										<span class="tag-pill mint">Memory Storage</span>
+										<span class="tag-pill orange">Instance Triplet Loss</span>
+										<span class="tag-pill blue">CAMO-FS Benchmark</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/FS-CDIS" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://www.kaggle.com/datasets/danhnt/camo-fs-dataset" target="_blank" class="p-btn"><i class="fas fa-database"></i> Dataset</a>
+										<a href="https://arxiv.org/abs/2304.07444" target="_blank" class="p-btn"><i class="fas fa-file-alt"></i> ArXiv</a>
+										<a href="https://ieeexplore.ieee.org/document/10608133" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\IEEEAccess_CamoFS_Poster.pdf" target="_blank" class="p-btn"><i class="fas fa-image"></i> Poster</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
+								</div>
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Camouflaged object detection and segmentation is a new and challenging research topic in computer vision. There is a serious issue of lacking data on concealed objects such as camouflaged animals in natural scenes. In this paper, we address the problem of few-shot learning for camouflaged object detection and segmentation. To this end, we first collect a new dataset, CAMO-FS, for the benchmark. As camouflaged instances are challenging to recognize due to their similarity compared to the surroundings, we guide our models to obtain camouflaged features that highly distinguish the instances from the background. In this work, we propose FS-CDIS, a framework to efficiently detect and segment camouflaged instances via two loss functions contributing to the training process. Firstly, the instance triplet loss with the characteristic of differentiating the anchor, which is the mean of all camouflaged foreground points, and the background points are employed to work at the instance level. Secondly, to consolidate the generalization at the class level, we present instance memory storage with the scope of storing camouflaged features of the same category, allowing the model to capture further class-level information during the learning process. The extensive experiments demonstrated that our proposed method achieves state-of-the-art performance on the newly collected dataset.</p>
+								<blockquote>
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>*, Anh-Khoa Nguyen Vu*, Nhat-Duy Nguyen*, et al. “The Art of Camouflage: Few-shot Learning for Animal Detection and Segmentation.” <i>IEEE Access</i>, Jul 2024.
+								</blockquote>
+							</div>
+						</article>
+
+						<!-- 10. InstSynth -->
+						<article class="project-card" id="InstSynth">
+							<div class="project-badge">
+								<span class="badge-dot"></span> MAPR 2024
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\instsynth_project.jpg" alt="InstSynth" />
+								</div>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\MAPR2024_InstSynth.pdf">InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>, Bich-Nga Pham, Trong-Tai Dam Vu, Vinh-Tiep Nguyen†, Thanh Duc Ngo, and Tam V. Nguyen
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Instance Synthesis</span>
+										<span class="tag-pill blue">Instance Segmentation</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/InstSynth" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://doi.org/10.1109/MAPR63514.2024.10660775" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\MAPR2024_InstSynth.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<a href="pdf\MAPR2024_InstSynth_Slides.pdf" target="_blank" class="p-btn"><i class="fas fa-chalkboard-teacher"></i> Slides</a>
+										<a href="pdf\MAPR2024_InstSynth_Poster.pdf" target="_blank" class="p-btn"><i class="fas fa-image"></i> Poster</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
+								</div>
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Scene understanding at the instance level is an essential task in computer vision to support modern Advanced Driver Assistance Systems. Solutions have been proposed with abundant annotated training data. However, the annotation at the instance level is high-cost due to huge manual efforts. In this work, we solve this problem by introducing InstSynth, an advanced framework leveraging instance-wise annotations as conditions to enrich the training data. Existing methods focused on semantic segmentation via using prompts to synthesize image-annotation pairs, facing an unrealistic manner. Our proposals utilize the strength of such large generative models to synthesize instance data with prompt-guided and maskbased mechanisms to boost the performance of the instancelevel scene understanding models. We empirically improve the performance of the latest instance segmentation architectures of FastInst and OneFormer by 14.49% and 11.59% AP, respectively, evaluated on the Cityscapes benchmark. Accordingly, we construct an instance-level synthesized dataset, dubbed ISCityscapes, with over a 4× larger number of instances in comparison with the vanilla Cityscapes.</p>
+								<blockquote>
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>, Bich-Nga Pham, Trong-Tai Dam Vu, et al. “InstSynth: Instance-wise Prompt-guided Style Masked Conditional Data Synthesis for Scene Understanding.” <i>2024 MAPR</i>. IEEE, 2024.
+								</blockquote>
+							</div>
+						</article>
+
+						<!-- 11. CE-OST -->
+						<article class="project-card" id="CE-OST">
+							<div class="project-badge">
+								<span class="badge-dot"></span> MAPR 2023
+							</div>
+							<div class="project-body">
+								<div class="project-thumb">
+									<img src="images\ceost_project.jpg" alt="CE-OST" />
+								</div>
+								<div class="project-info">
+									<h2 class="project-title"><a href="pdf\MAPR2023_CE-OST.pdf">CE-OST: Contour Emphasis for One-Stage Transformer-based Camouflage Instance Segmentation</a></h2>
+									<div class="project-authors">
+										<b>Thanh-Danh Nguyen</b>, Duc-Tuan Luu, Vinh-Tiep Nguyen†, and Thanh Duc Ngo
+									</div>
+									<div class="project-tags">
+										<span class="tag-pill mint">Contour Emphasis</span>
+										<span class="tag-pill orange">One-Stage Transformer</span>
+										<span class="tag-pill blue">Instance Segmentation</span>
+									</div>
+									<div class="project-links">
+										<a href="https://github.com/danhntd/CE-OST" target="_blank" class="p-btn"><i class="fab fa-github"></i> Code</a>
+										<a href="https://ieeexplore.ieee.org/document/10288682" target="_blank" class="p-btn"><i class="fas fa-link"></i> DOI</a>
+										<a href="pdf\MAPR2023_CE-OST.pdf" target="_blank" class="p-btn"><i class="fas fa-file-pdf"></i> PDF</a>
+										<a href="pdf\MAPR2023_CE-OST_Slides.pdf" target="_blank" class="p-btn"><i class="fas fa-chalkboard-teacher"></i> Slides</a>
+										<a href="pdf\MAPR2023_CE-OST_Poster.pdf" target="_blank" class="p-btn"><i class="fas fa-image"></i> Poster</a>
+										<button type="button" class="p-btn" onclick="$(this).closest('.project-card').find('.project-drawer').slideToggle(200);"><i class="fas fa-align-left"></i> Abstract / Cite</button>
+									</div>
+								</div>
+							</div>
+							<div class="project-drawer">
+								<p><b>Abstract:</b> Understanding camouflage images at instance level is such a challenging task in computer vision. Since the camouflage instances have their colors and textures similar to the background, the key to distinguish them in the images should rely on their contours. The contours seperate the instance from the background, thus recognizing these contours should break their camouflage mechanism. To this end, we address the problem of camouflage instance segmentation via the Contour Emphasis approach. We improve the ability of the segmentation models by enhancing the contours of the camouflaged instances. We propose the CE-OST framework which employs the well-known architecture of Transformer-based models in a one-stage manner to boost the performance of camouflaged instance segmentation. The extensive experiments prove our contributions over the state-of-the-art baselines on different benchmarks, i.e. CAMO++, COD10K and NC4K.</p>
+								<blockquote>
+									<b>Citation:</b> <b>Thanh-Danh Nguyen</b>, Duc-Tuan Luu, Vinh-Tiep Nguyen†, and Thanh Duc Ngo. “CE-OST: Contour Emphasis for One-Stage Transformer-based Camouflage Instance Segmentation.” <i>2023 MAPR</i>. IEEE, 2023.
+								</blockquote>
+							</div>
+						</article>
+
+						<div style="font-size: 0.8em; color: #64748b; font-style: italic; margin-top: 1em;">
+							* indicates equal contribution, † denotes corresponding authors.
+						</div>
+
 						<!-- Footer -->
 						<section id="footer">
-							<ul class="icons">
-
-							</ul>
-							<p class="copyright">&copy; Thanh-Danh Nguyen</a>. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
+							<ul class="icons"></ul>
+							<p class="copyright">&copy; Thanh-Danh Nguyen. Design: <a href="http://html5up.net">HTML5 UP</a>.</p>
 						</section>
 					</div>
 
 				<!-- Sidebar -->
 					<section id="sidebar">
-
-						<!-- Intro -->
-						<!-- <section id="intro">
-							<a href="#" class="logo"><img src="images/logo.jpg" alt="" /></a>
-							<header>
-								<h2>Projects</h2>
-							</header>
-						</section> -->
-
-						<!-- Intro -->
+						<!-- Floating TOC bên phải -->
 						<article class="blurb" id="project-toc">
 							<header>
+								<h4><a href="#Dual-TCR">Dual-TCR</a></h4>
+								<h4><a href="#TFKD">TFKD</a></h4>
 								<h4><a href="#CAMO-InstSynth">CAMO-InstSynth</a></h4>
 								<h4><a href="#Lite-DermosegDiff">Lite-DermosegDiff</a></h4>
 								<h4><a href="#CAMO-GenOS">CAMO-GenOS</a></h4>
@@ -458,26 +476,28 @@
 								<h4><a href="#CAMO-FS">CAMO-FS</a></h4>
 								<h4><a href="#InstSynth">InstSynth</a></h4>
 								<h4><a href="#CE-OST">CE-OST</a></h4>
-
 							</header>
-
 						</article>
-						
+
 						<section style="color:rgb(141, 141, 141);" class="blurb">
-								<h2>News</h2>
-								<div id="news-placeholder">Loading news...</div>
-						</section>
-						
-						<section style="color:rgb(0, 0, 0);" class="blurb">
-							<!-- <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=m&d=1uE_Kz2xVskwdjD5FXwRyJcm00jeRNnLWvqfqnfJw_A'></script> -->
-							<div style="width: 35%; margin-left: 0; text-align: left;">
-								<script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=ogxA0M4HY8y1M6AjFznK9VLmd7Gob7aYClhleAj10hw&cl=ffffff&w=a"></script>
-							</div>
-							<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a03dbaee99e14aaa8b421dffd57b8b34"}'></script><!-- End Cloudflare Web Analytics -->
+							<h2>News</h2>
+							<div id="news-placeholder">Loading news...</div>
 						</section>
 					</section>
 
+					<!-- Visitor Map cố định ở đáy trang góc phải -->
+					<div class="corner-map">
+						<script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=ogxA0M4HY8y1M6AjFznK9VLmd7Gob7aYClhleAj10hw&cl=ffffff&w=a"></script>
+					</div>
+					<!-- Cloudflare Web Analytics -->
+					<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "a03dbaee99e14aaa8b421dffd57b8b34"}'></script>
 			</div>
+
+		<!-- Popup Modal phóng to ảnh -->
+		<div id="image-modal" class="image-modal">
+			<span class="modal-close">&times;</span>
+			<img class="modal-content" id="modal-img" alt="Zoomed Project Image">
+		</div>
 
 		<!-- Scripts -->
 		<script src="assets/js/jquery.min.js"></script>
@@ -488,18 +508,40 @@
 
 		<script>
 			$(document).ready(function() {
+				// Tải News động từ trang index.html
 				if ($('#news-placeholder').length) {
 					$('#news-placeholder').load('index.html #dynamic-news li');
 				}
+
+				// Xử lý Popup xem ảnh lớn khi click vào hình vuông
+				$('.project-thumb').on('click', function(e) {
+					e.preventDefault();
+					const imgSrc = $(this).find('img').attr('src');$('#modal-img').attr('src', imgSrc);
+					$('#image-modal').addClass('show');
+				});
+
+				// Đóng popup khi click vào nút X hoặc click ra ngoài vùng ảnh
+				$('.modal-close, #image-modal').on('click', function(e) {
+					if (e.target !== document.getElementById('modal-img')) {
+						$('#image-modal').removeClass('show');
+					}
+				});
+
+				// Bắt sự kiện phím Escape để đóng popup
+				$(document).on('keydown', function(e) {
+					if (e.key === 'Escape') {
+						$('#image-modal').removeClass('show');
+					}
+				});
 			});
 		</script>
 
 		<script>
 			$(document).ready(function() {
-				// Cấu hình vùng nhận diện: Kích hoạt khi bài viết chiếm không gian giữa màn hình
+				// Cấu hình Floating TOC
 				const options = {
 					root: null,
-					rootMargin: '-25% 0px -55% 0px', 
+					rootMargin: '-20% 0px -60% 0px', 
 					threshold: 0
 				};
 
@@ -507,17 +549,12 @@
 					entries.forEach(entry => {
 						if (entry.isIntersecting) {
 							const id = entry.target.getAttribute('id');
-							
-							// 1. Xóa trạng thái active của tất cả các dòng trong mục lục
 							$('#project-toc header a').removeClass('active');
-							
-							// 2. Thêm class active vào dòng có href tương ứng với bài viết đang đọc
 							$(`#project-toc header a[href="#${id}"]`).addClass('active');
 						}
 					});
 				}, options);
 
-				// Tự động quét và theo dõi tất cả các bài viết (article) có tên trong mục lục
 				$('#project-toc header a').each(function() {
 					const targetId = $(this).attr('href');
 					if (targetId && targetId.startsWith('#')) {
